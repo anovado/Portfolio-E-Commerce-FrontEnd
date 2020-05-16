@@ -41,9 +41,9 @@ const Header = (props, postSignout) => {
           </div>
           <div class="collapse navbar-collapse col-sm-4" id="navbarResponsive">
             <ul class="navbar-nav text-uppercase ml-auto" id="ul-navbar-item">
-              <li class="nav-item"><Link class="nav-link js-scroll-trigger" href="#menus">MENU</Link></li>
+              <li class="nav-item"><Link class="nav-link js-scroll-trigger" to="/categories">MENU</Link></li>
               <li class="nav-item"><Link class="nav-link js-scroll-trigger" id="list-menu-header" href="#promos">PROMO</Link></li>
-              <li class="nav-item"><Link class="nav-link js-scroll-trigger" href="#profile">PROFILE</Link></li>
+              <li class="nav-item"><Link class="nav-link js-scroll-trigger" to="/profile">PROFILE</Link></li>
               <li class="nav-item"><Link class="nav-link js-scroll-trigger" href="#cart ">CART</Link></li>
               {isLogin ? (
                 <li class="nav-item"><Link class="nav-link js-scroll-trigger" to="#" onClick={() => postSignout()}>LOGOUT</Link></li>

@@ -8,8 +8,15 @@ const initialState = {
   isLogin: false,
   namaPengguna: '',
   kataKunci: '',
-  statusError: true
-}
+  statusError: true,
+  name: "",
+  province: "",
+  city: "",
+  postal_code: "",
+  city_type: "kota",
+  street: "",
+  phone: ""
+};
 
 export default function userReducer(userState = initialState, action) {
   switch (action.type) {
@@ -41,6 +48,22 @@ export default function userReducer(userState = initialState, action) {
       return {
         ...userState,
         status: action.payload.target.value,
+      }
+    case "GET_USER_DATA":
+      return {
+        ...userState,
+        name: action.payload.name,
+        email: action.payload.email,
+        province: action.payload.province,
+        city: action.payload.city,
+        postal_code: action.payload.postal_code,
+        street: action.payload.street,
+        phone: action.payload.phone,
+      }
+    case "POST_USER_DATA":
+      return {
+        ...userState,
+        statusError: false
       }
     default:
       return userState;

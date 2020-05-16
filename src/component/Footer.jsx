@@ -6,7 +6,7 @@ const Footer = (props) => {
   return (
     <div>
 
-      <section class="page-section" id="contact">
+      <section class="page-section mt-5" id="contact">
         <div class="container">
           <div class="row justify-content-center">
             <div class="col-lg-8 text-center">

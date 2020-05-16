@@ -9,6 +9,12 @@ import Categories from "../pages/Categories";
 import SignInForm from "../pages/SignInForm";
 import SignUpForm from "../pages/SignUpForm";
 import EachCategory from "../pages/EachCategory";
+import ProductInput from "../pages/ProductInput";
+import Product from "../pages/Product";
+import ProfileInput from "../pages/ProfileInput";
+import Profile from "../pages/Profile";
+import Cart from "../pages/Cart";
+import NotFound from "../pages/NotFound";
 
 
 const MainRoutes = () => {
@@ -20,10 +26,14 @@ const MainRoutes = () => {
                     <Route exact path="/categories" component={Categories} />
                     <Route exact path="/signin" component={SignInForm} />
                     <Route exact path="/signup" component={SignUpForm} />
-                    <Route exact path="/categories/croissant" component={EachCategory} />
-                    {/* <Route exact path="/profile" component={Profile} />
-          <Route path="/news-category/:category" component={Home} /> */}
-                    {/* <Route component={NotMatch} /> */}
+                    <Route exact path="/productinput" component={ProductInput} />
+                    <Route exact path="/profile" component={Profile} />
+                    <Route exact path="/editprofile" component={ProfileInput} />
+                    <Route exact path="/cart" component={Cart} />
+                    <Route exact path="/product/:category" component={Product} />
+                    <Route exact path="/categories/:category" component={EachCategory} />
+                    <Route component={NotFound} />
+
                 </Switch>
             </BrowserRouter>
         </Provider>

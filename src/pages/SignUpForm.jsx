@@ -6,23 +6,30 @@ import { changeInputUser, doSignUp, changeAccountType } from "../store/actions/a
 
 
 class SignUpForm extends Component {
-  postSignUp = async () => {
-    await this.props.doSignUp();
 
-    this.props.statusError ? alert("You have not registered") : this.props.history.push("/categories")
+  postSignUp = async () => {
+    console.warn("masuk function postsignup")
+    if (!this.props.status) {
+      alert("Please complete your data!")
+    } else {
+      await this.props.doSignUp();
+      this.props.statusError ? alert("You have not registered") : this.props.history.push("/signin")
+    }
+
+
   }
   render() {
     return (
       <div className="container-fluid">
         <div className="row no-gutter">
           <div className="d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
-          <div className="col-md-8 col-lg-6">
+          <div className="col-md-8 col-lg-6" id="signup-form-bg">
             <div className="login d-flex align-items-center py-5">
               <div className="container">
                 <div className="row">
                   <div className="col-md-9 col-lg-8 mx-auto">
                     <h3 className="login-heading mb-4">Welcome!</h3>
-                    <form class="form cf">
+                    <form class="form cf" onSubmit={(e) => e.preventDefault()}>
                       <div className="form-label-group">
                         <input type="text" id="inputUsername" className="form-control" name="namaPengguna" placeholder="Username" onChange={(e) => this.props.changeInput(e)} required autoFocus />
                         <label htmlFor="inputUsername">Username</label>
@@ -36,7 +43,7 @@ class SignUpForm extends Component {
                       <div class="mt-3">
                         <h5>Choose your account type:</h5>
                         <div class="input-group mt-5">
-                          <input class="input-group-radio" id="radio1" name="radio" value="buyer" onClick={this.props.changeAccountType} type="radio" defaultChecked />
+                          <input class="input-group-radio" id="radio1" name="radio" value="buyer" onClick={this.props.changeAccountType} type="radio" />
                           <label class="radio-label" htmlFor="radio1">Customer</label>
                         </div>
                         <div class="input-group">
@@ -76,7 +83,7 @@ const mapDispatchToProps = {
   changeAccountType: (e) => changeAccountType(e),
   doSignUp: doSignUp,
   changeInput: (e) => changeInputUser(e),
-  // doLogin: doLogin,
+
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(SignUpForm);

@@ -10,9 +10,13 @@ class SignInForm extends Component {
   postLogin = async () => {
     await this.props.doLogin();
     const isLogin = this.props.login;
+    const status = localStorage.getItem("status");
     console.warn(this.props)
-    if (isLogin) {
+    if (isLogin && (status !== "admin")) {
       this.props.history.push("/categories");
+    } else if (isLogin && (status === "admin")) {
+      console.log("status sign in", status)
+      this.props.history.push("/admin");
     }
   };
 
@@ -21,7 +25,7 @@ class SignInForm extends Component {
       <div className="container-fluid">
         <div className="row no-gutter">
           <div className="d-none d-md-flex col-md-4 col-lg-6 bg-image"></div>
-          <div className="col-md-8 col-lg-6">
+          <div className="col-md-8 col-lg-6" id="login-form-bg">
             <div className="login d-flex align-items-center py-5">
               <div className="container">
                 <div className="row">
@@ -62,6 +66,7 @@ const mapStateToProps = (state) => {
     namaPengguna: state.user.namaPengguna,
     kataKunci: state.user.kataKunci,
     login: state.user.isLogin,
+    // status: state.user.status,
   };
 };
 
