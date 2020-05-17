@@ -4,7 +4,6 @@ import { connect } from "react-redux";
 
 import Header from "../component/Header";
 import Footer from "../component/Footer";
-import ProductInCart from "../component/ProductInCart";
 // import { doLogOut, getUserData } from "../store/actions/actionUser";
 
 class Dashboard extends Component {
@@ -21,7 +20,7 @@ class Dashboard extends Component {
 
               <div className="wrapper center-block hidden-xs">
                 <div className="filters-text">
-                  {/* <span className="filter-span">FILTERS</span> */}
+
                 </div>
                 <div
                   className="panel-group"
@@ -29,7 +28,7 @@ class Dashboard extends Component {
                   role="tablist"
                   aria-multiselectable="true"
                 >
-                  <div className="panel panel-default">
+                  <div className="panel panel-default mb-2">
                     <div className="panel-heading" role="tab" id="heading1">
                       <h4 className="panel-title">
                         <a
@@ -61,7 +60,7 @@ class Dashboard extends Component {
                     </div>
                   </div>
 
-                  <div className="panel panel-default">
+                  <div className="panel panel-default mb-2">
                     <div className="panel-heading" role="tab" id="heading1">
                       <h4 className="panel-title">
                         <a
@@ -85,7 +84,7 @@ class Dashboard extends Component {
                     >
                       <div className="panel-body">
                         <div className="form-label-group">
-                          <input type="text" id="inputUsername" className="form-control" name="paymentMethod" placeholder="Payment Method" onChange={(e) => this.props.changeInput(e)} required autoFocus />
+                          <input type="text" className="form-control inputUsername" name="paymentMethod" placeholder="Payment Method" onChange={(e) => this.props.changeInput(e)} required autoFocus />
                           <label htmlFor="inputUsername">Payment Method</label>
                         </div>
                         <button type="submit" className="btn">Submit</button>
@@ -93,7 +92,7 @@ class Dashboard extends Component {
                     </div>
                   </div>
 
-                  <div className="panel panel-default">
+                  <div className="panel panel-default mb-2">
                     <div className="panel-heading" role="tab" id="heading1">
                       <h4 className="panel-title">
                         <a
@@ -117,7 +116,7 @@ class Dashboard extends Component {
                     >
                       <div className="panel-body">
                         <div className="form-label-group">
-                          <input type="text" id="inputUsername" className="form-control" name="shippingMethod" placeholder="Shipping Method" onChange={(e) => this.props.changeInput(e)} required autoFocus />
+                          <input type="text" className="form-control inputUsername" name="shippingMethod" placeholder="Shipping Method" onChange={(e) => this.props.changeInput(e)} required autoFocus />
                           <label htmlFor="inputUsername">Shipping Method</label>
                         </div>
                         <button type="submit" className="btn">Submit</button>
@@ -126,7 +125,7 @@ class Dashboard extends Component {
                   </div>
 
 
-                  <div className="panel panel-default">
+                  <div className="panel panel-default mb-2">
                     <div className="panel-heading" role="tab" id="heading1">
                       <h4 className="panel-title">
                         <a
@@ -150,7 +149,7 @@ class Dashboard extends Component {
                     >
                       <div className="panel-body">
                         <div className="form-label-group">
-                          <input type="text" id="inputUsername" className="form-control" name="shippingMethod" placeholder="Shipping Method" onChange={(e) => this.props.changeInput(e)} required autoFocus />
+                          <input type="text" className="form-control inputUsername" name="shippingMethod" placeholder="Shipping Method" onChange={(e) => this.props.changeInput(e)} required autoFocus />
                           <label htmlFor="inputUsername">Filter untuk get data client</label>
                         </div>
                         <button type="submit" className="btn">Submit</button>
@@ -159,7 +158,7 @@ class Dashboard extends Component {
                   </div>
 
 
-                  <div className="panel panel-default">
+                  <div className="panel panel-default mb-2">
                     <div className="panel-heading" role="tab" id="heading1">
                       <h4 className="panel-title">
                         <a
@@ -183,7 +182,7 @@ class Dashboard extends Component {
                     >
                       <div className="panel-body">
                         <div className="form-label-group">
-                          <input type="text" id="inputUsername" className="form-control" name="shippingMethod" placeholder="Shipping Method" onChange={(e) => this.props.changeInput(e)} required autoFocus />
+                          <input type="text" className="form-control inputUsername" name="shippingMethod" placeholder="Shipping Method" onChange={(e) => this.props.changeInput(e)} required autoFocus />
                           <label htmlFor="inputUsername">Input client id to delete</label>
                         </div>
                         <button type="submit" className="btn">Submit</button>

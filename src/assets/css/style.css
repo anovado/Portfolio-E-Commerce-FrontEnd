@@ -1370,7 +1370,7 @@ a.remove:hover {
 .promoCode input:active, .promoCode input:focus {
   outline: 0;
 }
-.promoCode a.btn {
+.promoCode a.bttn {
   float: left;
   width: 15%;
   padding: .35em 0;
@@ -1378,12 +1378,12 @@ a.remove:hover {
   text-align: center;
   border: 1px solid #82ca9c;
 }
-.promoCode a.btn:hover {
+.promoCode a.bttn:hover {
   border: 1px solid #f69679;
   background: #f69679;
 }
 
-.btn:link, .btn:visited {
+.bttn:link, .bttn:visited {
   text-decoration: none;
   font-family: "Montserrat", sans-serif;
   letter-spacing: -.015em;
@@ -1401,7 +1401,7 @@ a.remove:hover {
   -o-transition: all 0.25s linear;
   transition: all 0.25s linear;
 }
-.btn:after {
+.bttn:after {
   content: "\276f";
   padding: .5em;
   position: relative;
@@ -1412,13 +1412,13 @@ a.remove:hover {
   -o-transition: all 0.15s linear;
   transition: all 0.15s linear;
 }
-.btn:hover, .btn:focus, .btn:active {
+.bttn:hover, .bttn:focus, .bttn:active {
   background: #49a8df;
 }
-.btn:hover:after, .btn:focus:after, .btn:active:after {
+.bttn:hover:after, .bttn:focus:after, .bttn:active:after {
   right: -10px;
 }
-.promoCode .btn {
+.promoCode .bttn {
   font-size: .85em;
   padding: .5em 2em;
 }
@@ -1498,8 +1498,14 @@ a.remove:hover {
     width: 100%;
   }
 
-  a.btn.continue {
+  a.bttn.continue {
     width: 100%;
     text-align: center;
   }
+}
+
+
+/* DASHBOARD ADMIN */
+.form-control .inputUsername{
+  width: 100%;
 }

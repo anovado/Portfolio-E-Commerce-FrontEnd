@@ -44,7 +44,6 @@ export default function userReducer(userState = initialState, action) {
         statusError: false
       }
     case "CHANGE_ACCOUNT_TYPE":
-      console.log("change account in reduce", action.payload.target.value)
       return {
         ...userState,
         status: action.payload.target.value,

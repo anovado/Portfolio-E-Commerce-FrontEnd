@@ -32,11 +32,11 @@ class Profile extends Component {
                       <img src="https://source.unsplash.com/700x700/?person,headshot" style={{ width: "100%" }} alt="profile" />
                     </div>
                     <div className="row mt-2">
-                      <Link to="/editprofile" className="btn"> Edit Profile </Link>
+                      <Link to="/editprofile" className="bttn"> Edit Profile </Link>
                     </div>
                     {status === "baker" ? (
                       <div className="row mt-2">
-                        <Link to="/productinput" className="btn"> Post Product </Link>
+                        <Link to="/productinput" className="bttn"> Post Product </Link>
                       </div>
                     ) : false}
                   </div>

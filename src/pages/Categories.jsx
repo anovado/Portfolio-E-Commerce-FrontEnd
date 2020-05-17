@@ -37,7 +37,6 @@ class Categories extends Component {
       return false;
     });
 
-    console.log("allproducts", allProductsData)
     return (
       <div>
 

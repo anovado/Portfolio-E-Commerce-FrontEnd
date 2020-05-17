@@ -5,7 +5,6 @@ import Product from "../../pages/Product";
 export const getTransDetail = (props) => {
   return async (dispatch) => {
     const token = localStorage.getItem("token");
-    // console.log("didalam async gettrans", token)
     await axios
       .get("http://0.0.0.0:5050/cart", {
         headers: {
@@ -15,7 +14,6 @@ export const getTransDetail = (props) => {
         }
       })
       .then(async (response) => {
-        // console.log("diatas dispatch")
         dispatch({ type: "SUCCESS_GET_TRANSACTION", payload: response.data });
       })
       .catch((error) => {
@@ -58,7 +56,6 @@ export const postTransaction = (item) => {
 export const deleteTransaction = (item) => {
   return async (dispatch) => {
     const token = localStorage.getItem("token");
-    console.log("item", item)
     await axios
       .delete("http://0.0.0.0:5050/cart/" + item, {
         headers: {
@@ -68,8 +65,31 @@ export const deleteTransaction = (item) => {
         },
       })
       .then(async (response) => {
-        console.log("inside dispatch delete")
         dispatch({ type: "SUCCESS_DELETE_TRANSACTION" });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
+};
+
+export const checkOut = () => {
+  return async (dispatch) => {
+    const token = localStorage.getItem("token");
+    const bodyRequest = {
+      status: false,
+    };
+    const myJSON = JSON.stringify(bodyRequest);
+    await axios
+      .post("http://0.0.0.0:5050/cart/checkout", myJSON, {
+        headers: {
+          "Content-Type": "application/json; charset=utf-8",
+          Accept: "application/json; charset=utf-8",
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then(async (response) => {
+        dispatch({ type: "SUCCESS_CHEKOUT" });
       })
       .catch(function (error) {
         console.log(error);

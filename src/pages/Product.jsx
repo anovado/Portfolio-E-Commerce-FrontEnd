@@ -15,9 +15,7 @@ class Product extends Component {
 
   componentDidMount = async () => {
 
-    // this.props.getProductData()
     const paramCategory = await this.props.match.params.category;
-    // console.log('mounted')
     this.props.getRes(paramCategory)
   }
 
@@ -28,10 +26,8 @@ class Product extends Component {
     this.props.statusError ? alert("You haven't successfully added this item to your cart!") : this.props.history.push("/cart");
   }
   render() {
-    // const allProductsData = this.props.allProducts
-    // console.log("allproduts data", this.props.productDetails)
+
     let isPromo = this.props.productDetails.promo
-    // console.log("ispromo", isPromo)
     return (
       <div>
 

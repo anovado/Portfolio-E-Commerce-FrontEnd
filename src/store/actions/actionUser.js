@@ -36,7 +36,6 @@ export const changeInputUser = (e) => {
 
 // function to signup
 export const doSignUp = (props) => {
-  console.log("berhasil masuk")
   return async (dispatch, getState) => {
     const bodyRequest = {
       username: getState().user.namaPengguna,
@@ -76,7 +75,6 @@ export const doLogOut = (e) => {
 
 // function to get account type value in registration form
 export const changeAccountType = (e) => {
-  console.log("value radio", e)
 
   return {
     type: "CHANGE_ACCOUNT_TYPE",
@@ -87,13 +85,10 @@ export const changeAccountType = (e) => {
 
 // function to get user's data
 export const getUserData = (props) => {
-  console.log("masuk getuser data")
   return async (dispatch, getState) => {
-    // const myJSON = JSON.stringify(bodyRequest);
     const status = localStorage.getItem("status");
     const token = localStorage.getItem("token");
     if (status === "buyer") {
-      console.log("masuk getuser data customer")
       await axios
         .get("http://0.0.0.0:5050/customer/profile", {
           headers: {
@@ -110,7 +105,6 @@ export const getUserData = (props) => {
           console.log(error)
         })
     } else if (status === "baker") {
-      console.log("masuk getuser data baker")
       await axios
         .get("http://0.0.0.0:5050/baker/profile", {
           headers: {
@@ -147,10 +141,8 @@ export const postUserData = (props) => {
     const myJSON = JSON.stringify(bodyRequest);
     const status = localStorage.getItem("status");
     const token = localStorage.getItem("token");
-    console.log("status", status)
 
     if (status === "buyer") {
-      console.log("masuk post customer, status:", status)
       await axios
         .post("http://0.0.0.0:5050/customer/profile", myJSON, {
           headers: {

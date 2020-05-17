@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
 import SignIn from "../component/SignIn";
-import SignUp from "../component/SignUp";
+// import SignUp from "../component/SignUp";
 import Search from "../component/Search";
 import { doLogin, changeInputUser } from "../store/actions/actionUser";
 
@@ -12,7 +12,7 @@ class Home extends Component {
 
   render() {
     return (
-      // <div style={{ backgroundImage: `url(${mainBackground})` }} >
+
       <div id="container jumbotron-background">
         <img src={require("../assets/images/main-background.jpg")} id="main-bg" alt="" />
         <Link to="/categories"><img src={require("../assets/images/logo_transparent.png")} className="top-right" alt="logo breadcrumb" /></Link>
@@ -27,22 +27,12 @@ class Home extends Component {
             <Search />
           </div>
           <div role="tabpanel" className="tab-pane" id="tab-02">
-            <SignIn {...this.props}/>
+            <SignIn {...this.props} />
           </div>
-          <div role="tabpanel" className="tab-pane" id="tab-03">
+          {/* <div role="tabpanel" className="tab-pane" id="tab-03">
             <SignUp />
-          </div>
+          </div> */}
         </div>
-        {/* <ul className="nav nav-tabs">
-          <li className="nav-item">
-            <Link className="nav-link active" href="#">Sign In</Link>
-            <SignIn />
-          </li>
-          <li className="nav-item">
-            <Link className="nav-link" href="#">Sign Up</Link>
-            <SignUp />
-          </li>
-        </ul> */}
       </div>
     )
 

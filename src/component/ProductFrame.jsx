@@ -12,7 +12,6 @@ const ProductFrame = (props) => {
             await props.history.replace("/product/" + Category);
         }
     };
-    // console.log("id", id)
     return (
         <div onClick={() => changeRouter(id)} >
             <Link className="portfolio-item" to="#">

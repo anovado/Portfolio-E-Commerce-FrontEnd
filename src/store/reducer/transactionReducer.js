@@ -23,6 +23,10 @@ export default function transactionReducer(transactionState = initialState, acti
                 ...transactionState,
                 statusError: false,
             };
+        case "SUCCESS_CEKOUT":
+            return {
+                ...transactionState,
+            };
         default:
             return transactionState;
     }

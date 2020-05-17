@@ -18,7 +18,8 @@ const Header = (props, postSignout) => {
     props.history.push("/")
   }
 
-  let isLogin = localStorage.getItem("isLogin");
+  const isLogin = localStorage.getItem("isLogin");
+  const status = localStorage.getItem("status");
   // isLogin = props.dataUser !== undefined && props.dataUser.isLogin !== undefined ? props.dataUser.isLogin : false
   return (
     <div>
@@ -45,15 +46,21 @@ const Header = (props, postSignout) => {
               {/* <li className="nav-item"><Link className="nav-link js-scroll-trigger" id="list-menu-header" href="#promos">PROMO</Link></li> */}
               {isLogin ? (
                 <Fragment>
-                <li className="nav-item"><Link className="nav-link js-scroll-trigger" to="/profile">PROFILE</Link></li>
-                <li className="nav-item"><Link className="nav-link js-scroll-trigger" to="/cart ">CART</Link></li>
-                <li className="nav-item"><Link className="nav-link js-scroll-trigger" to="#" onClick={() => postSignout()}>LOGOUT</Link></li>
+                  {status === "admin" ? (
+                    <li className="nav-item"><Link className="nav-link js-scroll-trigger" to="/dashboard">DASHBOARD</Link></li>
+                  ) : (
+                      <Fragment>
+                        <li className="nav-item"><Link className="nav-link js-scroll-trigger" to="/profile">PROFILE</Link></li>
+                        <li className="nav-item"><Link className="nav-link js-scroll-trigger" to="/cart ">CART</Link></li>
+                      </Fragment>
+                    )}
+                  <li className="nav-item"><Link className="nav-link js-scroll-trigger" to="#" onClick={() => postSignout()}>LOGOUT</Link></li>
                 </Fragment>
               ) : (
-                <Fragment>
-                  <li className="nav-item"><Link className="nav-link js-scroll-trigger" to="/signin">LOGIN</Link></li>
-                  <li className="nav-item"><Link className="nav-link js-scroll-trigger" to="/signup">REGISTER</Link></li>
-                </Fragment>
+                  <Fragment>
+                    <li className="nav-item"><Link className="nav-link js-scroll-trigger" to="/signin">LOGIN</Link></li>
+                    <li className="nav-item"><Link className="nav-link js-scroll-trigger" to="/signup">REGISTER</Link></li>
+                  </Fragment>
                 )}
             </ul>
           </div>

@@ -11,11 +11,9 @@ class SignInForm extends Component {
     await this.props.doLogin();
     const isLogin = this.props.login;
     const status = localStorage.getItem("status");
-    console.warn(this.props)
     if (isLogin && (status !== "admin")) {
       this.props.history.push("/categories");
     } else if (isLogin && (status === "admin")) {
-      console.log("status sign in", status)
       this.props.history.push("/dashboard");
     }
   };

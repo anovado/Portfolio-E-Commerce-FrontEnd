@@ -22,7 +22,7 @@ const ProductInCart = (props) => {
               <p>Rp {qty * price},-</p>
             </div>
             <div className="cartSection removeWrap">
-              <button onClick={(e) => props.deleteTrans(e)} value={id} style={{borderRadius:"50%"}} className="remove">x</button>
+              <button onClick={(e) => props.deleteTrans(e)} value={id} style={{ borderRadius: "50%" }} className="remove">x</button>
             </div>
           </div>
         </li>

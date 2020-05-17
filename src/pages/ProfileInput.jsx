@@ -10,7 +10,6 @@ class ProfileInput extends Component {
 
   editFormData = async () => {
     await this.props.postUserData();
-    console.log(this.props.dataUser.statusError)
     await this.props.dataUser.statusError ? alert("Your attempt was failed, please try again.") : this.props.history.push("/profile");
   };
 

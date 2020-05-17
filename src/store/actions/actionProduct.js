@@ -22,7 +22,6 @@ export const getProductData = (props) => {
         }
       })
       .then(async (response) => {
-        console.warn("masuk getproduct data dalem asynbc")
         dispatch({ type: "GET_PRODUCT_DATA", payload: response.data });
       })
       .catch((error) => {
@@ -34,7 +33,6 @@ export const getProductData = (props) => {
 
 // function to post product data
 export const postProductData = (props) => {
-  console.log("masuk function post")
   return async (dispatch, getState) => {
     const bodyRequest = {
       name: getState().product.name,
@@ -48,7 +46,6 @@ export const postProductData = (props) => {
     }
     const myJSON = JSON.stringify(bodyRequest);
     const token = localStorage.getItem("token");
-    console.log("masuk function post cek token", token)
 
     await axios
       .post("http://0.0.0.0:5050/product", myJSON, {
@@ -69,7 +66,6 @@ export const postProductData = (props) => {
 
 // function to get product type id value in product input form
 export const changeProductType = (e) => {
-  console.log("value product type", e)
 
   return {
     type: "CHANGE_PRODUCT_TYPE",
@@ -79,7 +75,6 @@ export const changeProductType = (e) => {
 
 // function to get promo status value in product input form
 export const changePromo = (e) => {
-  console.log("value promo status", e)
 
   return {
     type: "CHANGE_PROMO",
@@ -107,9 +102,7 @@ export const handleRequestCategory = (categoryName) => {
 // function to handle get products by category
 export const getProductsByCategory = (categoryName) => {
   return async (dispatch) => {
-    console.warn("cek dari getProductsbycategory action", categoryName);
     const response = await axios.get("http://0.0.0.0:5050/product");
-    console.log("response inside products by category", response)
     const filterCategory = response.data.filter((item) => {
       if (item.product_type_id == categoryName) {
         return item
@@ -117,7 +110,6 @@ export const getProductsByCategory = (categoryName) => {
         return false
       }
     })
-    console.log("filtercategory", filterCategory)
     dispatch({
       type: "REQUEST_LIST_PRODUCTS2",
       payload: filterCategory,
@@ -127,7 +119,6 @@ export const getProductsByCategory = (categoryName) => {
 
 // function to get product by id
 export const getRes = (category) => {
-  console.warn("cek dari getRes action", category);
   return async (dispatch) => {
     const response = await axios.get("http://0.0.0.0:5050/product/" + category);
 

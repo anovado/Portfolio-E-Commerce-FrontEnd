@@ -9,20 +9,11 @@ import "../assets/css/style-forminput.css";
 
 class ProductInput extends Component {
 
-  // componentDidMount = async () => {
-  //   // const paramCategory = await this.props.match.params.category;
-  //   console.log('mounted')
-  //   // this.props.getData()
-  //   let selectVal = $("#product_type").val();
-  //   console.log(selectVal)
-  // }
+
   editFormData = async () => {
-    console.log("masuk editform")
     await this.props.postProductData();
-    console.log("statuserror", this.props.statusError)
     await this.props.statusError ? alert("Your attempt was failed, please try again.") : console.log("success")
-    // : this.props.history.push("/profile");
-    // await this.props.product_type_id ? this.props.history.push("/profile") : alert("Please choose your product type")
+
   };
 
 
