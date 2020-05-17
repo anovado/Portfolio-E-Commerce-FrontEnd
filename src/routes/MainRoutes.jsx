@@ -16,6 +16,7 @@ import Profile from "../pages/Profile";
 import Cart from "../pages/Cart";
 import Dashboard from "../pages/Dashboard";
 import NotFound from "../pages/NotFound";
+import Checkout from "../pages/Checkout";
 
 
 const MainRoutes = () => {
@@ -32,6 +33,7 @@ const MainRoutes = () => {
                     <Route exact path="/profile" component={Profile} />
                     <Route exact path="/editprofile" component={ProfileInput} />
                     <Route exact path="/dashboard" component={Dashboard} />
+                    <Route exact path="/checkout" component={Checkout} />
                     <Route exact path="/product/:category" component={Product} />
                     <Route exact path="/categories/:category" component={EachCategory} />
                     <Route component={NotFound} />

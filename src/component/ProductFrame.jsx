@@ -15,13 +15,13 @@ const ProductFrame = (props) => {
     // console.log("id", id)
     return (
         <div onClick={() => changeRouter(id)} >
-            <Link class="portfolio-item" to="#">
-                <span class="caption">
-                    <span class="caption-content">
+            <Link className="portfolio-item" to="#">
+                <span className="caption">
+                    <span className="caption-content">
                         <h2 id="product-name-frame ">{name}</h2>
                     </span>
                 </span>
-                <img class="img-fluid" src={image} style={{ height: "500px", width: "100%" }} alt="product" />
+                <img className="img-fluid" src={image} style={{ height: "500px", width: "100%" }} alt="product" />
             </Link>
         </div>
 

@@ -9,6 +9,7 @@ import Banner from "../component/Banner";
 // import ProductFrame from "../component/ProductFrame";
 import { handleRequestCategory, getRes, getProductData } from "../store/actions/actionProduct";
 import { doLogOut } from "../store/actions/actionUser";
+import { postTransaction } from "../store/actions/actionTransaction";
 
 class Product extends Component {
 
@@ -20,74 +21,80 @@ class Product extends Component {
     this.props.getRes(paramCategory)
   }
 
+  postTrans = async (e) => {
+    e.preventDefault();
+    await this.props.postTransaction(e.target.value);
+
+    this.props.statusError ? alert("You haven't successfully added this item to your cart!") : this.props.history.push("/cart");
+  }
   render() {
     // const allProductsData = this.props.allProducts
-    console.log("allproduts data", this.props.productDetails)
+    // console.log("allproduts data", this.props.productDetails)
     let isPromo = this.props.productDetails.promo
-    console.log("ispromo", isPromo)
+    // console.log("ispromo", isPromo)
     return (
       <div>
 
         <Header {...this.props} />
 
         <Banner />
-        <div class="container">
+        <div className="container">
 
-          <div class="row mb-5">
+          <div className="row mb-5">
 
-            <div class="col-lg-5" id="picture-in-product" style={{ marginTop: "-70px" }}>
-              <img class="img-fluid" id="product-picture-page" src={this.props.productDetails.image} style={{ borderRadius: "10px", height: "100%" }} alt="product" />
+            <div className="col-lg-5" id="picture-in-product" style={{ marginTop: "-70px" }}>
+              <img className="img-fluid" id="product-picture-page" src={this.props.productDetails.image} style={{ borderRadius: "10px", height: "100%" }} alt="product" />
             </div>
 
-            <div class="col-lg-6">
+            <div className="col-lg-6">
 
-              <div class="card mt-4 text-left">
-                <div class="card-body">
-                  <h2 class="card-title text-center">{this.props.productDetails.name}</h2>
-                  <hr class="divider my-4" />
+              <div className="card mt-4 text-left">
+                <div className="card-body">
+                  <h2 className="card-title text-center">{this.props.productDetails.name}</h2>
+                  <hr className="divider my-4" />
                   <h4>Rp {this.props.productDetails.price},-</h4>
-                  <p class="card-text">Ingredients: {this.props.productDetails.ingredients}</p>
-                  <p class="card-text">Weight: {this.props.productDetails.weight} grams</p>
+                  <p className="card-text">Ingredients: {this.props.productDetails.ingredients}</p>
+                  <p className="card-text">Weight: {this.props.productDetails.weight} grams</p>
                   {isPromo ? (
-                    <p class="card-text">This product is on a {this.props.productDetails.discount}% discount</p>
+                    <p className="card-text">This product is on a {this.props.productDetails.discount}% discount</p>
                   ) : false}
                   <span>Rating: <img src={require("../assets/images/5stars.png")} alt="5 stars" style={{ width: "95px" }} />
                   </span>
 
                 </div>
-                <button class="btn">Add to cart</button>
+                <button className="btn" value={this.props.productDetails.id} onClick={(e) => this.postTrans(e)} >Add to cart</button>
               </div>
             </div>
           </div>
           {/* <div style={{ height: "8rem" }}></div> */}
-          <div class="container mt-5">
-            <div class="row justify-content-center mt-5">
-              <div class="col-lg-8 text-center">
-                <h2 class="mt-0">Product Reviews</h2>
-                <hr class="divider my-4" />
+          <div className="container mt-5">
+            <div className="row justify-content-center mt-5">
+              <div className="col-lg-8 text-center">
+                <h2 className="mt-0">Product Reviews</h2>
+                <hr className="divider my-4" />
 
               </div>
             </div>
-            <div class="row">
-              <div class="col-lg-4 ml-auto text-center mb-5 mb-lg-0">
-                {/* <i class="fas fa-phone fa-3x mb-3 text-muted"></i>
+            <div className="row">
+              <div className="col-lg-4 ml-auto text-center mb-5 mb-lg-0">
+                {/* <i className="fas fa-phone fa-3x mb-3 text-muted"></i>
                 <div>+62 (21) 123-4567</div> */}
               </div>
-              <div class="col-lg-4 mr-auto text-center">
-                {/* <i class="fas fa-envelope fa-3x mb-3 text-muted"></i
-                ><a class="d-block" href="mailto:cs@breadcrumb.com">cs@breadcrumb.com</a> */}
+              <div className="col-lg-4 mr-auto text-center">
+                {/* <i className="fas fa-envelope fa-3x mb-3 text-muted"></i
+                ><a className="d-block" href="mailto:cs@breadcrumb.com">cs@breadcrumb.com</a> */}
               </div>
             </div>
           </div>
-          <div class="card card-outline-secondary mt-5" style={{ width: "100%" }}>
-            <div class="card-body">
+          <div className="card card-outline-secondary mt-5" style={{ width: "100%" }}>
+            <div className="card-body">
               <p>So delicious!!</p>
-              <small class="text-muted">Posted by Anonymous on 5/14/20</small>
+              <small className="text-muted">Posted by Anonymous on 5/14/20</small>
               <hr />
               <p>We love this bread!!!</p>
-              <small class="text-muted">Posted by Anonymous on 5/10/20</small>
+              <small className="text-muted">Posted by Anonymous on 5/10/20</small>
               <hr />
-              <a href="#" class="btn btn-success">Leave a Review</a>
+              <a href="#" className="btn btn-success">Leave a Review</a>
             </div>
           </div>
 
@@ -116,6 +123,7 @@ const mapDispatchToProps = {
   getRes,
   getProductData,
   handleRequestCategory,
+  postTransaction,
   doLogOut
 }
 

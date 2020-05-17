@@ -29,7 +29,7 @@ class SignUpForm extends Component {
                 <div className="row">
                   <div className="col-md-9 col-lg-8 mx-auto">
                     <h3 className="login-heading mb-4">Welcome!</h3>
-                    <form class="form cf" onSubmit={(e) => e.preventDefault()}>
+                    <form className="form cf" onSubmit={(e) => e.preventDefault()}>
                       <div className="form-label-group">
                         <input type="text" id="inputUsername" className="form-control" name="namaPengguna" placeholder="Username" onChange={(e) => this.props.changeInput(e)} required autoFocus />
                         <label htmlFor="inputUsername">Username</label>
@@ -40,15 +40,15 @@ class SignUpForm extends Component {
                         <label htmlFor="inputPassword">Password</label>
                       </div>
 
-                      <div class="mt-3">
+                      <div className="mt-3">
                         <h5>Choose your account type:</h5>
-                        <div class="input-group mt-5">
-                          <input class="input-group-radio" id="radio1" name="radio" value="buyer" onClick={this.props.changeAccountType} type="radio" />
-                          <label class="radio-label" htmlFor="radio1">Customer</label>
+                        <div className="input-group mt-5">
+                          <input className="input-group-radio" id="radio1" name="radio" value="buyer" onClick={this.props.changeAccountType} type="radio" />
+                          <label className="radio-label" htmlFor="radio1">Customer</label>
                         </div>
-                        <div class="input-group">
-                          <input class="input-group-radio" id="radio2" name="radio" value="baker" onClick={this.props.changeAccountType} type="radio" />
-                          <label class="radio-label" htmlFor="radio2">Seller</label>
+                        <div className="input-group">
+                          <input className="input-group-radio" id="radio2" name="radio" value="baker" onClick={this.props.changeAccountType} type="radio" />
+                          <label className="radio-label" htmlFor="radio2">Seller</label>
                         </div>
                       </div>
 

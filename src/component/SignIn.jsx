@@ -26,7 +26,7 @@ const SignIn = (props, postLogin) => {
               <label>Your Username</label>
             </div>
             <div className="group">
-              <input type="text" name="kataKunci" onChange={(e) => props.changeInput(e)} required />
+              <input type="password" name="kataKunci" onChange={(e) => props.changeInput(e)} required />
               <span className="highlight"></span>
               <label>Your Password</label>
             </div>

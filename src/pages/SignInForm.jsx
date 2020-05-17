@@ -16,7 +16,7 @@ class SignInForm extends Component {
       this.props.history.push("/categories");
     } else if (isLogin && (status === "admin")) {
       console.log("status sign in", status)
-      this.props.history.push("/admin");
+      this.props.history.push("/dashboard");
     }
   };
 

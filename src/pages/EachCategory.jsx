@@ -46,11 +46,11 @@ class EachCategory extends Component {
       <div>
         <Header {...this.props} />
         <CategoryBanner />
-        <div class="text-center mt-5" style={{ color: "#201e1f" }}>
+        <div className="text-center mt-5" style={{ color: "#201e1f" }}>
           <h1 id="each-category-title" >{productType}</h1>
-          <hr class="divider my-4" style={{ maxWidth: "20rem" }} />
+          <hr className="divider my-4" style={{ maxWidth: "20rem" }} />
         </div>
-        <div class="container">
+        <div className="container">
           <div className="row">
             {allProductsData.map((el, index) => (
               <div className="col-lg-4 mt-3">

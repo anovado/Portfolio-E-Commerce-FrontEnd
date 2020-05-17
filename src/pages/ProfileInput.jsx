@@ -18,43 +18,43 @@ class ProfileInput extends Component {
     return (
       <div>
         <Header {...this.props} />
-        <div class="page-wrapper bg-blue p-t-100 p-b-100 font-robo">
-          <div class="wrapper wrapper--w960">
-            <div class="card card-2">
-              <div class="card-heading" style={{ background: "url(https://source.unsplash.com/300x600/?baker,baking)" }}></div>
-              <div class="card-body">
-                <h4 class="title">Please complete your data here:</h4>
+        <div className="page-wrapper bg-blue p-t-100 p-b-100 font-robo">
+          <div className="wrapper wrapper--w960">
+            <div className="card card-2">
+              <div className="card-heading" style={{ background: "url(https://source.unsplash.com/300x600/?baker,baking)" }}></div>
+              <div className="card-body">
+                <h4 className="title">Please complete your data here:</h4>
                 <form method="POST" onSubmit={(e) => e.preventDefault()}>
-                  <div class="form-group">
-                    <input type="text" class="form-control" name="name" onChange={(e) => this.props.changeInput(e)} id="inputName" placeholder="Your name" />
+                  <div className="form-group">
+                    <input type="text" className="form-control" name="name" onChange={(e) => this.props.changeInput(e)} id="inputName" placeholder="Your name" />
                   </div>
 
-                  <div class="form-group">
-                    <input type="email" class="form-control" name="email" onChange={(e) => this.props.changeInput(e)} id="inputEmail4" placeholder="Email" />
+                  <div className="form-group">
+                    <input type="email" className="form-control" name="email" onChange={(e) => this.props.changeInput(e)} id="inputEmail4" placeholder="Email" />
                   </div>
 
-                  <div class="form-group">
-                    <input type="text" class="form-control" name="street" onChange={(e) => this.props.changeInput(e)} id="inputAddress" placeholder="Your address" />
+                  <div className="form-group">
+                    <input type="text" className="form-control" name="street" onChange={(e) => this.props.changeInput(e)} id="inputAddress" placeholder="Your address" />
                   </div>
 
-                  <div class="form-row">
-                    <div class="form-group col-md-6">
-                      <input type="text" class="form-control" name="city" onChange={(e) => this.props.changeInput(e)} id="inputCity" placeholder="Your city" />
+                  <div className="form-row">
+                    <div className="form-group col-md-6">
+                      <input type="text" className="form-control" name="city" onChange={(e) => this.props.changeInput(e)} id="inputCity" placeholder="Your city" />
                     </div>
-                    <div class="form-group col-md-6">
-                      <input type="text" class="form-control" name="province" onChange={(e) => this.props.changeInput(e)} id="inputProvince" placeholder="Your province" />
+                    <div className="form-group col-md-6">
+                      <input type="text" className="form-control" name="province" onChange={(e) => this.props.changeInput(e)} id="inputProvince" placeholder="Your province" />
                     </div>
                   </div>
-                  <div class="form-row">
-                    <div class="form-group col-md-6">
-                      <input type="text" class="form-control" name="postal_code" onChange={(e) => this.props.changeInput(e)} id="inputZip" placeholder="Your zip code" />
+                  <div className="form-row">
+                    <div className="form-group col-md-6">
+                      <input type="text" className="form-control" name="postal_code" onChange={(e) => this.props.changeInput(e)} id="inputZip" placeholder="Your zip code" />
                     </div>
-                    <div class="form-group col-md-6">
-                      <input type="text" class="form-control" name="phone" onChange={(e) => this.props.changeInput(e)} id="inputPhone" placeholder="Your phone number" />
+                    <div className="form-group col-md-6">
+                      <input type="text" className="form-control" name="phone" onChange={(e) => this.props.changeInput(e)} id="inputPhone" placeholder="Your phone number" />
                     </div>
                   </div>
 
-                  <button type="submit" class="btn btn-primary" onClick={() => this.editFormData()}>Submit</button>
+                  <button type="submit" className="btn btn-primary" onClick={() => this.editFormData()}>Submit</button>
 
                 </form>
               </div>

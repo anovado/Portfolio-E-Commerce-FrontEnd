@@ -1,4 +1,4 @@
-import React from "react";
+import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
 // import { BrowserRouter } from 'react-router-dom';
 
@@ -22,13 +22,13 @@ const Header = (props, postSignout) => {
   // isLogin = props.dataUser !== undefined && props.dataUser.isLogin !== undefined ? props.dataUser.isLogin : false
   return (
     <div>
-      <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
-        <div class="container-fluid mt-0" id="sticky-header">
+      <nav className="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+        <div className="container-fluid mt-0" id="sticky-header">
           <div className="col-sm-1 mr-5 d-flex justify-content-between">
 
-            <a class="navbar-brand js-scroll-trigger" href="#page-top"><img src={require("../assets/images/logo_transparent_cropped.png")} id="logo-in-header" alt="logo" /></a>
+            <a className="navbar-brand js-scroll-trigger" href="#page-top"><img src={require("../assets/images/logo_transparent_cropped.png")} id="logo-in-header" alt="logo" /></a>
             <button
-              class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive"
+              className="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive"
               aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">Menu
               </button>
           </div>
@@ -39,16 +39,21 @@ const Header = (props, postSignout) => {
               <button className="btn my-2 my-sm-0" type="submit" id="search-loop-logo"><i className="fa fa-fw fa-search"></i></button>
             </form>
           </div>
-          <div class="collapse navbar-collapse col-sm-4" id="navbarResponsive">
-            <ul class="navbar-nav text-uppercase ml-auto" id="ul-navbar-item">
-              <li class="nav-item"><Link class="nav-link js-scroll-trigger" to="/categories">MENU</Link></li>
-              <li class="nav-item"><Link class="nav-link js-scroll-trigger" id="list-menu-header" href="#promos">PROMO</Link></li>
-              <li class="nav-item"><Link class="nav-link js-scroll-trigger" to="/profile">PROFILE</Link></li>
-              <li class="nav-item"><Link class="nav-link js-scroll-trigger" to="/cart ">CART</Link></li>
+          <div className="collapse navbar-collapse col-sm-4" id="navbarResponsive">
+            <ul className="navbar-nav text-uppercase ml-auto" id="ul-navbar-item">
+              <li className="nav-item"><Link className="nav-link js-scroll-trigger" to="/categories">MENU</Link></li>
+              {/* <li className="nav-item"><Link className="nav-link js-scroll-trigger" id="list-menu-header" href="#promos">PROMO</Link></li> */}
               {isLogin ? (
-                <li class="nav-item"><Link class="nav-link js-scroll-trigger" to="#" onClick={() => postSignout()}>LOGOUT</Link></li>
+                <Fragment>
+                <li className="nav-item"><Link className="nav-link js-scroll-trigger" to="/profile">PROFILE</Link></li>
+                <li className="nav-item"><Link className="nav-link js-scroll-trigger" to="/cart ">CART</Link></li>
+                <li className="nav-item"><Link className="nav-link js-scroll-trigger" to="#" onClick={() => postSignout()}>LOGOUT</Link></li>
+                </Fragment>
               ) : (
-                  <li class="nav-item"><Link class="nav-link js-scroll-trigger" to="/signin">LOGIN</Link></li>
+                <Fragment>
+                  <li className="nav-item"><Link className="nav-link js-scroll-trigger" to="/signin">LOGIN</Link></li>
+                  <li className="nav-item"><Link className="nav-link js-scroll-trigger" to="/signup">REGISTER</Link></li>
+                </Fragment>
                 )}
             </ul>
           </div>

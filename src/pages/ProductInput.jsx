@@ -31,32 +31,32 @@ class ProductInput extends Component {
       <div>
         <Header {...this.props} />
 
-        <div class="page-wrapper bg-red p-t-100 p-b-100 font-robo">
-          <div class="wrapper wrapper--w960">
-            <div class="card card-2">
-              <div class="card-heading"></div>
-              <div class="card-body">
-                <h2 class="title">Post your products here:</h2>
+        <div className="page-wrapper bg-red p-t-100 p-b-100 font-robo">
+          <div className="wrapper wrapper--w960">
+            <div className="card card-2">
+              <div className="card-heading"></div>
+              <div className="card-body">
+                <h2 className="title">Post your products here:</h2>
                 <form method="POST" onSubmit={(e) => e.preventDefault()}>
-                  <div class="input-group">
-                    <input class="input--style-2" type="text" placeholder="Name" onChange={(e) => this.props.changeInput(e)} name="name" required />
+                  <div className="input-group">
+                    <input className="input--style-2" type="text" placeholder="Name" onChange={(e) => this.props.changeInput(e)} name="name" required />
                   </div>
-                  <div class="row row-space">
-                    <div class="col-sm-6">
-                      <div class="input-group">
-                        <input class="input--style-2" type="text" placeholder="Price" onChange={(e) => this.props.changeInput(e)} name="price" required />
+                  <div className="row row-space">
+                    <div className="col-sm-6">
+                      <div className="input-group">
+                        <input className="input--style-2" type="text" placeholder="Price" onChange={(e) => this.props.changeInput(e)} name="price" required />
                       </div>
                     </div>
-                    <div class="col-sm-6">
-                      <div class="input-group">
-                        <input class="input--style-2" type="text" placeholder="Weight (in grams)" onChange={(e) => this.props.changeInput(e)} name="weight" required />
+                    <div className="col-sm-6">
+                      <div className="input-group">
+                        <input className="input--style-2" type="text" placeholder="Weight (in grams)" onChange={(e) => this.props.changeInput(e)} name="weight" required />
                       </div>
                     </div>
                   </div>
-                  <div class="row row-space">
-                    <div class="col-sm-3">
-                      <div class="input-group">
-                        <div class="rs-select2 js-select-simple select--no-search">
+                  <div className="row row-space">
+                    <div className="col-sm-3">
+                      <div className="input-group">
+                        <div className="rs-select2 js-select-simple select--no-search">
                           <select id="product_type" name="product type"  >
                             <option disabled="disabled" selected="selected">Product Type</option>
                             <option value="1" onClick={this.props.changeProductTypeId}>Croissants</option>
@@ -66,45 +66,45 @@ class ProductInput extends Component {
                             <option value="5" onClick={this.props.changeProductTypeId}>Pies</option>
                             <option value="6" onClick={this.props.changeProductTypeId}>Cakes</option>
                           </select>
-                          <div class="select-dropdown"></div>
+                          <div className="select-dropdown"></div>
                         </div>
                       </div>
                     </div>
 
-                    <div class="col-sm-2">
-                      <div class="input-group">
-                        <div class="rs-select2 js-select-simple select--no-search">
+                    <div className="col-sm-2">
+                      <div className="input-group">
+                        <div className="rs-select2 js-select-simple select--no-search">
                           <select name="promo" >
                             <option disabled="disabled" selected="selected">Promo</option>
                             <option value="true" onClick={this.props.changePromoStatus}>True</option>
                             <option value="false" onClick={this.props.changePromoStatus}>False</option>
                           </select>
-                          <div class="select-dropdown"></div>
+                          <div className="select-dropdown"></div>
                         </div>
                       </div>
                     </div>
-                    <div class="col-sm-5">
-                      <div class="input-group" >
-                        <input class="input--style-2" type="text" placeholder="Discount" onChange={(e) => this.props.changeInput(e)} name="discount" required />
+                    <div className="col-sm-5">
+                      <div className="input-group" >
+                        <input className="input--style-2" type="text" placeholder="Discount" onChange={(e) => this.props.changeInput(e)} name="discount" required />
                       </div>
                     </div>
                   </div>
-                  <div class="row row-space">
+                  <div className="row row-space">
 
-                    <div class="input-group">
-                      <input class="input--style-2" type="text-area" placeholder="Ingredients" onChange={(e) => this.props.changeInput(e)} name="ingredients" required />
+                    <div className="input-group">
+                      <input className="input--style-2" type="text-area" placeholder="Ingredients" onChange={(e) => this.props.changeInput(e)} name="ingredients" required />
                     </div>
 
                   </div>
-                  <div class="row row-space">
+                  <div className="row row-space">
 
-                    <div class="input-group">
-                      <input class="input--style-2" type="text-area" placeholder="Image" onChange={(e) => this.props.changeInput(e)} name="image" required />
+                    <div className="input-group">
+                      <input className="input--style-2" type="text-area" placeholder="Image" onChange={(e) => this.props.changeInput(e)} name="image" required />
                     </div>
 
                   </div>
-                  <div class="p-t-30">
-                    <button class="btn btn--radius btn--green" onClick={() => this.editFormData()} type="submit">Submit</button>
+                  <div className="p-t-30">
+                    <button className="btn btn--radius btn--green" onClick={() => this.editFormData()} type="submit">Submit</button>
                   </div>
                 </form>
               </div>

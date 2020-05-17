@@ -56,7 +56,7 @@ class Dashboard extends Component {
                           <input type="text" id="inputUsername" className="form-control" name="productType" placeholder="Product Type" onChange={(e) => this.props.changeInput(e)} required autoFocus />
                           <label htmlFor="inputUsername">Product Type</label>
                         </div>
-                        <button type="submit" class="btn">Submit</button>
+                        <button type="submit" className="btn">Submit</button>
                       </div>
                     </div>
                   </div>
@@ -88,7 +88,7 @@ class Dashboard extends Component {
                           <input type="text" id="inputUsername" className="form-control" name="paymentMethod" placeholder="Payment Method" onChange={(e) => this.props.changeInput(e)} required autoFocus />
                           <label htmlFor="inputUsername">Payment Method</label>
                         </div>
-                        <button type="submit" class="btn">Submit</button>
+                        <button type="submit" className="btn">Submit</button>
                       </div>
                     </div>
                   </div>
@@ -120,7 +120,7 @@ class Dashboard extends Component {
                           <input type="text" id="inputUsername" className="form-control" name="shippingMethod" placeholder="Shipping Method" onChange={(e) => this.props.changeInput(e)} required autoFocus />
                           <label htmlFor="inputUsername">Shipping Method</label>
                         </div>
-                        <button type="submit" class="btn">Submit</button>
+                        <button type="submit" className="btn">Submit</button>
                       </div>
                     </div>
                   </div>
@@ -153,7 +153,7 @@ class Dashboard extends Component {
                           <input type="text" id="inputUsername" className="form-control" name="shippingMethod" placeholder="Shipping Method" onChange={(e) => this.props.changeInput(e)} required autoFocus />
                           <label htmlFor="inputUsername">Filter untuk get data client</label>
                         </div>
-                        <button type="submit" class="btn">Submit</button>
+                        <button type="submit" className="btn">Submit</button>
                       </div>
                     </div>
                   </div>
@@ -186,7 +186,7 @@ class Dashboard extends Component {
                           <input type="text" id="inputUsername" className="form-control" name="shippingMethod" placeholder="Shipping Method" onChange={(e) => this.props.changeInput(e)} required autoFocus />
                           <label htmlFor="inputUsername">Input client id to delete</label>
                         </div>
-                        <button type="submit" class="btn">Submit</button>
+                        <button type="submit" className="btn">Submit</button>
                       </div>
                     </div>
                   </div>

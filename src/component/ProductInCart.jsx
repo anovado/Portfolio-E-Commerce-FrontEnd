@@ -3,33 +3,30 @@ import { Link } from "react-router-dom";
 // import { BrowserRouter } from 'react-router-dom';
 
 const ProductInCart = (props) => {
+  const { name, image, id, qty, price } = props
+  const url = `/product/${id}`
   return (
     <div>
-      <ul class="cartWrap">
-        <li class="items odd">
-          <div class="infoWrap">
-            <div class="cartSection">
-              <img src={props.image} alt="" class="itemImg" />
-              <p class="itemNumber">PRODUCT ID: {props.product_type_id}</p>
-              <h3>Item Name {props.index}</h3>
-              <p> <input type="text" class="qty" placeholder="3" /> x Rp 5.00</p>
-              <p class="stockStatus"> In Stock</p>
+      <ul className="cartWrap" style={{ borderBottom: "1px solid #ccc" }}>
+        <li className="items odd">
+          <div className="infoWrap">
+            <Link to={url}></Link>
+            <div className="cartSection">
+              <img src={image} alt="" className="itemImg" />
+              <p className="itemNumber">PRODUCT ID: {id}</p>
+              <h3>Item Name: {name}</h3>
+              <p> <input type="text" className="qty" placeholder="3" />{qty} x Rp {price},-</p>
+              <p className="stockStatus"> In Stock</p>
             </div>
-            <div class="prodTotal cartSection">
-              <p>Rp {props.total_price}</p>
+            <div className="prodTotal cartSection">
+              <p>Rp {qty * price},-</p>
             </div>
-            <div class="cartSection removeWrap">
-              <a href="#" class="remove">x</a>
+            <div className="cartSection removeWrap">
+              <button onClick={(e) => props.deleteTrans(e)} value={id} style={{borderRadius:"50%"}} className="remove">x</button>
             </div>
           </div>
         </li>
       </ul>
-      {/* <div className="col-lg-4">
-        <img class="img-fluid" src={image} style={{ width: "100%" }} alt="product" />
-      </div>
-      <div className="col-lg-8">
-        <p>{name}</p>
-      </div> */}
     </div>
   )
 }
