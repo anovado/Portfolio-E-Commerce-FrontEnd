@@ -51,9 +51,11 @@ class Product extends Component {
                   {isPromo ? (
                     <p class="card-text">This product is on a {this.props.productDetails.discount}% discount</p>
                   ) : false}
-                  <span class="text-warning">Rating: 4.0 stars</span>
+                  <span>Rating: <img src={require("../assets/images/5stars.png")} alt="5 stars" style={{ width: "95px" }} />
+                  </span>
 
                 </div>
+                <button class="btn">Add to cart</button>
               </div>
             </div>
           </div>

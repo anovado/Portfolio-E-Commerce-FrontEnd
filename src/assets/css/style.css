@@ -357,6 +357,8 @@ header.masthead .masthead-heading {
   background-color: rgba(97, 25, 3, 0.7) !important;
   border-color: transparent;
   border-radius: 5px;
+  height: 60px;
+  padding-top: 15px;
 }
 
 #tell-more-button:hover{
@@ -395,7 +397,7 @@ header.masthead .masthead-heading {
 .btn-login {
   font-size: 0.9rem;
   letter-spacing: 0.05rem;
-  padding: 0.75rem 1rem;
+  padding: 0.35rem 1rem;
   border-radius: 2rem;
 }
 
@@ -916,7 +918,7 @@ form .form-group input{
         background-image: -ms-linear-gradient(0deg, #766dff 0%, #88f3ff 100%);
         margin-bottom: 200px; }
         .home_banner_area .box_1620 {
-          min-height: 700px;
+          min-height: 500px;
           border-radius: 12px;
           position: relative;
           bottom: -200px;
@@ -1371,7 +1373,7 @@ a.remove:hover {
 .promoCode a.btn {
   float: left;
   width: 15%;
-  padding: .75em 0;
+  padding: .35em 0;
   border-radius: 0 1em 1em 0;
   text-align: center;
   border: 1px solid #82ca9c;
@@ -1386,9 +1388,9 @@ a.remove:hover {
   font-family: "Montserrat", sans-serif;
   letter-spacing: -.015em;
   font-size: 1em;
-  padding: 1em 3em;
+  padding: 0.2em 1em;
   color: #fff;
-  background: #82ca9c;
+  background: #e4a452;
   font-weight: bold;
   border-radius: 50px;
   /* float: right;
@@ -1411,7 +1413,7 @@ a.remove:hover {
   transition: all 0.15s linear;
 }
 .btn:hover, .btn:focus, .btn:active {
-  background: #f69679;
+  background: #49a8df;
 }
 .btn:hover:after, .btn:focus:after, .btn:active:after {
   right: -10px;

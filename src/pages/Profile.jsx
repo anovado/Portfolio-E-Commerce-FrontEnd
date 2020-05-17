@@ -14,11 +14,15 @@ class Profile extends Component {
     this.props.getUserData()
   }
   render() {
+    const status = localStorage.getItem("status");
     return (
       <div>
-        <Header />
+        <Header {...this.props} />
         <section class="home_banner_area mb-5">
           <div class="container box_1620">
+            <div className="row d-flex justify-content-center text-center" style={{ fontFamily: "Montserrat" }}>
+              <h1>PROFILE PAGE</h1>
+            </div>
             <div class="banner_inner d-flex align-items-center">
               <div class="banner_content">
                 <div class="media row">
@@ -27,15 +31,20 @@ class Profile extends Component {
                     <div className="row">
                       <img src="https://source.unsplash.com/700x700/?person,headshot" style={{ width: "100%" }} alt="profile" />
                     </div>
-                    <div className="row mt-2" style={{}}>
+                    <div className="row mt-2">
                       <Link to="/editprofile" class="btn"> Edit Profile </Link>
                     </div>
+                    {status === "baker" ? (
+                      <div className="row mt-2">
+                        <Link to="/productinput" class="btn"> Post Product </Link>
+                      </div>
+                    ) : false}
                   </div>
-                  <div className="col-lg-2"></div>
+                  <div className="col-lg-1"></div>
                   <div class="col-lg-3 media-body">
-                    <div class="personal_text mt-3">
-                      <h6>Hello Everybody! I am</h6>
-                      <h3>{this.props.dataUser.name}</h3>
+                    <div class="personal_text">
+                      <h6>Hello Everybody! I am a {status}</h6>
+                      <h3>My name is {this.props.dataUser.name}</h3>
                       <h4>I live in {this.props.dataUser.city}</h4>
                       <p><i class="far fa-calendar-alt"></i> {this.props.dataUser.email}</p>
                       <p><i class="fas fa-mobile-alt"></i> {this.props.dataUser.phone}</p>
@@ -55,7 +64,7 @@ class Profile extends Component {
         </section>
         <div style={{ height: "10rem" }}></div>
         <Footer />
-      </div>
+      </div >
 
     )
   }

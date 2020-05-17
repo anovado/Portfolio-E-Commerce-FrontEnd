@@ -4,24 +4,24 @@ import { connect } from "react-redux";
 
 import Header from "../component/Header";
 import Footer from "../component/Footer";
-// import { doLogOut, getUserData } from "../store/actions/actionUser";
+import ProductInCart from "../component/ProductInCart";
+import { doLogOut, getUserData } from "../store/actions/actionUser";
+import { getTransDetail } from "../store/actions/actionTransaction";
 
 class Cart extends Component {
 
+  componentDidMount = async () => {
+
+    console.log('mounted')
+    this.props.getTransDetail()
+  }
+
   render() {
+    console.log("get trans detail", this.props.dataCart)
     return (
-      // <div className="container">
-      //   <div className="row">
-      //     <div className="col-lg-8">
-      //       <div className="row"></div>
-      //       <div className="row"></div>
-      //     </div>
-      //     <div className="col-lg-4"></div>
-      //   </div>
-      // </div>
 
       <div>
-        <Header />
+        <Header {...this.props} />
         <div class="wrap cf">
           <h1 class="projTitle">Your<span>-</span> Shopping Cart</h1>
           <div class="heading cf">
@@ -29,38 +29,7 @@ class Cart extends Component {
             <Link to="/categories" class="continue">Continue Shopping</Link>
           </div>
           <div class="cart">
-            {/* <ul class="tableHead">
-              <li class="prodHeader">Product</li>
-              <li>Quantity</li>
-              <li>Total</li>
-              <li>Remove</li>
-            </ul> */}
-            <ul class="cartWrap">
-              <li class="items odd">
-
-                <div class="infoWrap">
-                  <div class="cartSection">
-                    <img src="http://lorempixel.com/output/technics-q-c-300-300-4.jpg" alt="" class="itemImg" />
-                    <p class="itemNumber">#QUE-007544-002</p>
-                    <h3>Item Name 1</h3>
-
-                    <p> <input type="text" class="qty" placeholder="3" /> x $5.00</p>
-
-                    <p class="stockStatus"> In Stock</p>
-                  </div>
-
-
-                  <div class="prodTotal cartSection">
-                    <p>$15.00</p>
-                  </div>
-                  <div class="cartSection removeWrap">
-                    <a href="#" class="remove">x</a>
-                  </div>
-                </div>
-              </li>
-
-
-            </ul>
+            <ProductInCart {...this.props} />
           </div>
           <div class="subtotal cf">
             <ul>
@@ -81,4 +50,25 @@ class Cart extends Component {
   }
 }
 
-export default Cart;
+
+const mapStateToProps = (state) => {
+  return {
+    // allProducts: state.product.allProducts,
+    productDetails: state.product.productDetails,
+    dataUser: state.user,
+    login: state.user.isLogin,
+    dataCart: state.cart.dataCart,
+
+  };
+};
+
+
+const mapDispatchToProps = {
+  // getRes,
+  // getProductData,
+  // handleRequestCategory,
+  getTransDetail,
+  doLogOut
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Cart);

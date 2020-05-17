@@ -3,10 +3,12 @@ import thunk from "redux-thunk";
 
 import userReducer from './reducer/userReducer'
 import productReducer from './reducer/productReducer'
+import transactionReducer from "./reducer/transactionReducer";
 
 const rootReducer = combineReducers({
     product: productReducer,
-    user: userReducer
+    user: userReducer,
+    cart: transactionReducer
 });
 
 const store = createStore(rootReducer, applyMiddleware(thunk));

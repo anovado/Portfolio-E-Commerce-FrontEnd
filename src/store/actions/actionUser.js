@@ -92,7 +92,7 @@ export const getUserData = (props) => {
     // const myJSON = JSON.stringify(bodyRequest);
     const status = localStorage.getItem("status");
     const token = localStorage.getItem("token");
-    if (status === "customer") {
+    if (status === "buyer") {
       console.log("masuk getuser data customer")
       await axios
         .get("http://0.0.0.0:5050/customer/profile", {
