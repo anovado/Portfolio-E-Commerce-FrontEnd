@@ -5,7 +5,7 @@ import { connect } from "react-redux";
 import Header from "../component/Header";
 import Footer from "../component/Footer";
 import { doLogOut, getUserData } from "../store/actions/actionUser";
-import { getHistoryTransaction, deleteTransaction } from "../store/actions/actionTransaction";
+import { getHistoryTransaction } from "../store/actions/actionTransaction";
 
 class Profile extends Component {
 
@@ -87,13 +87,6 @@ class Profile extends Component {
                               <h3 id="product-name-frame ">{subel.product_id.name}</h3>
                               <h5 id="product-name-frame ">IDR {subel.product_id.price}</h5>
                               <h5 id="product-name-frame ">{subel.qty} pcs</h5>
-                              <button
-                                className="button-color bttn btn mb-4"
-                                value={subel.id}
-                                onClick={(e) => this.deleteTransaction(e)}
-                              >
-                                Delete Transaction
-                              </button>
                             </div>
                           );
                         })}
@@ -149,7 +142,6 @@ const mapDispatchToProps = {
   doLogOut,
   getUserData,
   getHistoryTransaction,
-  deleteTransaction
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profile);

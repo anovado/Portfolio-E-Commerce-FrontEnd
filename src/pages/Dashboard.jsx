@@ -10,7 +10,7 @@ class Dashboard extends Component {
 
   render() {
     return (
-      <div>
+      <div style={{}} id="dashboard-body">
         <Header />
         <div style={{ height: "10rem" }}></div>
         <div className="page-wrapper bg-gra-03 sidebar">

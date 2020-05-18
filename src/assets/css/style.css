@@ -363,7 +363,7 @@ header.masthead .masthead-heading {
 
 #tell-more-button:hover{
   background-color: rgba(255, 255, 255, 0.7);
-  color: rgb(231, 99, 59);
+  color: rgb(218, 221, 25);
   font-weight: bolder;
   border-color: transparent;
 }
@@ -1511,4 +1511,8 @@ a.remove:hover {
 /* DASHBOARD ADMIN */
 .form-control .inputUsername{
   width: 100%;
+}
+
+#dasboard-body{
+  background-image: linear-gradient(to bottom right, red, yellow);
 }
