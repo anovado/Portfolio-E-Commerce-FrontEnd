@@ -26,7 +26,6 @@ export default function userReducer(userState = initialState, action) {
         [action.payload.target.name]: action.payload.target.value
       }
     case "SUCCESS_LOGIN":
-      // console.warn("from userReducer", action.payload)
       return {
         ...userState,
         username: action.payload.username,

@@ -1,17 +1,18 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
 import Header from "../component/Header";
 import Footer from "../component/Footer";
 import { doLogOut, getUserData } from "../store/actions/actionUser";
+import { getHistoryTransaction, deleteTransaction } from "../store/actions/actionTransaction";
 
 class Profile extends Component {
 
   componentDidMount = async () => {
 
-    console.log('mounted')
-    this.props.getUserData()
+    await this.props.getUserData()
+    await this.props.getHistoryTransaction();
   }
   render() {
     const status = localStorage.getItem("status");
@@ -63,6 +64,70 @@ class Profile extends Component {
           </div>
         </section>
         <div style={{ height: "10rem" }}></div>
+        {status === "baker" ? (
+          <section>
+            <div className="container mt-5">
+              <div className="row table-responsive">
+                <div className="container-fluid">
+
+                  <h3>Your Sold-Goods History</h3>
+                  <hr className="divider my-4" />
+
+                  {this.props.dataTransaction.map((el, index) => {
+                    return (
+                      <div className="row" key={index} id="product-frame-profile-page" >
+                        {el.transaction_detail.map((subel, i) => {
+                          return (
+                            <div className="col-lg-3 mt-5" >
+                              <span className="caption">
+                                <span className="caption-content">
+                                </span>
+                              </span>
+                              <img className="img-fluid" src={subel.product_id.image} style={{ height: "350px", width: "100%" }} alt="product" />
+                              <h3 id="product-name-frame ">{subel.product_id.name}</h3>
+                              <h5 id="product-name-frame ">IDR {subel.product_id.price}</h5>
+                              <h5 id="product-name-frame ">{subel.qty} pcs</h5>
+                              <button
+                                className="button-color bttn btn mb-4"
+                                value={subel.id}
+                                onClick={(e) => this.deleteTransaction(e)}
+                              >
+                                Delete Transaction
+                              </button>
+                            </div>
+                          );
+                        })}
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+              <div className=" cf mt-4">
+                {this.props.dataTransaction.map((el, index) => {
+                  return (
+                    <Fragment className="container-fluid" key={index}>
+                      <div className="row my-3" style={{ border: "2px solid #ccc", padding: "10px", borderRadius: "10px" }}>
+                        <div className="col-lg-2 totalRow">
+                          <span className="value"><strong>Transaction id:</strong> {el.cart.id}</span>
+                        </div>
+                        <div className="col-lg-5 totalRow">
+                          <span className="value"><strong>Total qty:</strong> {el.cart.total_qty}</span>
+                        </div>
+                        <div className="col-lg-5 totalRow">
+                          <span className="value"><strong>Subtotal:</strong> {el.cart.total_price} IDR</span>
+                        </div>
+                      </div>
+                    </Fragment>
+                  )
+                })}
+              </div>
+
+            </div>
+            <div style={{ height: "2rem" }}></div>
+          </section>
+        ) : false
+        }
+
         <Footer />
       </div >
 
@@ -75,13 +140,16 @@ const mapStateToProps = (state) => {
   return {
     dataUser: state.user,
     login: state.user.isLogin,
+    dataTransaction: state.cart.dataCart
   };
 };
 
 
 const mapDispatchToProps = {
   doLogOut,
-  getUserData
+  getUserData,
+  getHistoryTransaction,
+  deleteTransaction
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Profile);

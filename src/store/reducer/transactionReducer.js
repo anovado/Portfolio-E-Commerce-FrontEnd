@@ -13,6 +13,11 @@ export default function transactionReducer(transactionState = initialState, acti
                 ...transactionState,
                 dataCart: action.payload,
             };
+        case "SUCCESS_GET_ALL_TRANSACTION":
+            return {
+                ...transactionState,
+                dataCart: action.payload,
+            };
         case "SUCCESS_POST_TRANSACTION":
             return {
                 ...transactionState,
@@ -23,7 +28,7 @@ export default function transactionReducer(transactionState = initialState, acti
                 ...transactionState,
                 statusError: false,
             };
-        case "SUCCESS_CEKOUT":
+        case "SUCCESS_CHECKOUT":
             return {
                 ...transactionState,
             };

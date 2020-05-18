@@ -82,7 +82,7 @@ class Cart extends Component {
 
     )
   }
-}
+};
 
 
 const mapStateToProps = (state) => {
@@ -96,9 +96,6 @@ const mapStateToProps = (state) => {
 
 
 const mapDispatchToProps = {
-  // getRes,
-  // getProductData,
-  // handleRequestCategory,
   getProductsByCategory,
   getTransDetail,
   deleteTransaction,

@@ -4,7 +4,7 @@ import { connect } from "react-redux";
 
 import Header from "../component/Header";
 import Footer from "../component/Footer";
-// import { doLogOut, getUserData } from "../store/actions/actionUser";
+import { changeInputClient, getClientData, deleteClient } from "../store/actions/actionDashboard";
 
 class Dashboard extends Component {
 
@@ -149,10 +149,10 @@ class Dashboard extends Component {
                     >
                       <div className="panel-body">
                         <div className="form-label-group">
-                          <input type="text" className="form-control inputUsername" name="shippingMethod" placeholder="Shipping Method" onChange={(e) => this.props.changeInput(e)} required autoFocus />
+                          <input type="text" onChange={(e) => this.props.changeInput(e)} className="form-control inputUsername" name="categoryName" placeholder="Get Client Data" required autoFocus />
                           <label htmlFor="inputUsername">Filter untuk get data client</label>
                         </div>
-                        <button type="submit" className="btn">Submit</button>
+                        <button type="submit" onClick={() => this.props.getClients} className="btn">Submit</button>
                       </div>
                     </div>
                   </div>
@@ -202,4 +202,20 @@ class Dashboard extends Component {
   }
 }
 
-export default Dashboard;
+const mapStateToProps = (state) => {
+  return {
+
+    login: state.user.isLogin,
+    // status: state.user.status,
+  };
+};
+
+const mapDispatchToProps = {
+  changeInput: (e) => changeInputClient(e),
+  getClients: (e) => getClientData(e),
+  deleteClient
+  // doLogin: doLogin,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
+// export default SignInForm;

@@ -20,7 +20,7 @@ class Home extends Component {
         <ul className="nav nav-tabs" role="tablist">
           <li role="presentation" className="active"><a href="#tab-01" aria-controls="tab-01" role="tab" id="home-page-tabs" data-toggle="tab">Search</a></li>
           <li role="presentation"><a href="#tab-02" aria-controls="tab-02" role="tab" id="home-page-tabs2" data-toggle="tab">Log In</a></li>
-          <li role="presentation"><a href="#tab-03" aria-controls="tab-03" role="tab" id="home-page-tabs3" data-toggle="tab">Register</a></li>
+          {/* <li role="presentation"><a href="#tab-03" aria-controls="tab-03" role="tab" id="home-page-tabs3" data-toggle="tab">Register</a></li> */}
         </ul>
         <div className="tab-content">
           <div role="tabpanel" className="tab-pane active" id="tab-01">

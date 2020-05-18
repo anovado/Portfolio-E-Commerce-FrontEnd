@@ -1033,6 +1033,9 @@ form .form-group input{
       .banner_area .banner_inner .banner_content .page_link a:hover {
         color: #766dff; }
 
+#product-frame-profile-page{
+  border-bottom: 2px solid #ccc;
+}
 /* PRODUCT PAGE */
 
 .portfolio-item {
