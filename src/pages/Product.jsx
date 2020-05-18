@@ -28,6 +28,8 @@ class Product extends Component {
   render() {
 
     let isPromo = this.props.productDetails.promo
+    const isLogin = localStorage.getItem("isLogin");
+
     return (
       <div>
 
@@ -58,7 +60,10 @@ class Product extends Component {
                   </span>
 
                 </div>
-                <button className="btn" value={this.props.productDetails.id} onClick={(e) => this.postTrans(e)} >Add to cart</button>
+                {isLogin ? (
+                  <button className="btn" value={this.props.productDetails.id} onClick={(e) => this.postTrans(e)} >Add to cart</button>
+
+                ) : false}
               </div>
             </div>
           </div>
