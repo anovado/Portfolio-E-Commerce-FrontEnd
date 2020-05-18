@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
 // import CategoryBanner from "../component/CategoryBanner";
@@ -63,7 +63,9 @@ class Product extends Component {
                 {isLogin ? (
                   <button className="btn" value={this.props.productDetails.id} onClick={(e) => this.postTrans(e)} >Add to cart</button>
 
-                ) : false}
+                ) : (
+                    <button className="btn" value={this.props.productDetails.id}><Link to="/signin">Add to cart</Link></button>
+                  )}
               </div>
             </div>
           </div>
