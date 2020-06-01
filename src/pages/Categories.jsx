@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
 import Header from "../component/Header";
@@ -9,20 +9,23 @@ import AboutSection from "../component/About";
 import Footer from "../component/Footer";
 import JoinUs from "../component/JoinUs";
 
-import { handleRequestCategory, getProductData, getRes } from "../store/actions/actionProduct"
-import { doLogOut } from "../store/actions/actionUser"
+import {
+  handleRequestCategory,
+  getProductData,
+  getRes,
+} from "../store/actions/actionProduct";
+import { doLogOut } from "../store/actions/actionUser";
 
 class Categories extends Component {
-
   componentDidMount = async () => {
+    window.scrollTo(0, 0);
     this.props.getProductData();
     // const paramCategory = await this.props.match.params.category;
     // this.props.getRes(paramCategory);
-  }
+  };
 
   // redux function to change router and request movies by Category
   handleRequestCategoryProducts = async (CategoryName) => {
-
     await this.props.history.replace("/categories/" + CategoryName);
 
     const paramCategory = await this.props.match.params.category;
@@ -30,28 +33,27 @@ class Categories extends Component {
   };
 
   render() {
-    const allProductsData = this.props.allProducts.filter((item) => {
-      if (item.name !== null) {
-        return item;
-      }
-      return false;
-    });
+    // const allProductsData = this.props.allProducts.filter((item) => {
+    //   if (item.name !== null) {
+    //     return item;
+    //   }
+    //   return false;
+    // });
 
     return (
       <div>
-
         <Header {...this.props} />
         <Jumbotron />
         <AboutSection />
-        <ProductTypes handleRouter={(e) => this.handleRequestCategoryProducts(e)} />
+        <ProductTypes
+          handleRouter={(e) => this.handleRequestCategoryProducts(e)}
+        />
         <JoinUs />
         <Footer />
       </div>
-    )
+    );
   }
-};
-
-
+}
 
 const mapStateToProps = (state) => {
   return {
@@ -61,12 +63,11 @@ const mapStateToProps = (state) => {
   };
 };
 
-
 const mapDispatchToProps = {
   getProductData,
   getRes,
   handleRequestCategory,
-  doLogOut
-}
+  doLogOut,
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(Categories);

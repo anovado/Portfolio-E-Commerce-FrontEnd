@@ -1,5 +1,5 @@
 import axios from "axios";
-import Product from "../../pages/Product";
+// import Product from "../../pages/Product";
 
 // function to handle get products by category
 export const getTransDetail = (props) => {
@@ -11,17 +11,16 @@ export const getTransDetail = (props) => {
           "Content-Type": "application/json; charset=utf-8",
           Accept: "application/json; charset=utf-8",
           Authorization: `Bearer ${token}`,
-        }
+        },
       })
       .then(async (response) => {
         dispatch({ type: "SUCCESS_GET_TRANSACTION", payload: response.data });
       })
       .catch((error) => {
-        console.log(error)
-      })
+        console.log(error);
+      });
   };
 };
-
 
 // function to handle get products by category
 export const postTransaction = (item) => {
@@ -32,8 +31,7 @@ export const postTransaction = (item) => {
       qty: 1,
       shipping_method_id: 1,
       payment_method_id: 1,
-
-    }
+    };
     const myJSON = JSON.stringify(bodyRequest);
     await axios
       .post("http://0.0.0.0:5050/cart", myJSON, {
@@ -41,17 +39,16 @@ export const postTransaction = (item) => {
           "Content-Type": "application/json; charset=utf-8",
           Accept: "application/json; charset=utf-8",
           Authorization: `Bearer ${token}`,
-        }
+        },
       })
       .then(async (response) => {
         dispatch({ type: "SUCCESS_POST_TRANSACTION" });
       })
       .catch((error) => {
-        console.log(error)
-      })
+        console.log(error);
+      });
   };
 };
-
 
 export const deleteTransaction = (item) => {
   return async (dispatch) => {
@@ -109,7 +106,10 @@ export const getHistoryTransaction = () => {
         },
       })
       .then(async (response) => {
-        dispatch({ type: "SUCCESS_GET_ALL_TRANSACTION", payload: response.data });
+        dispatch({
+          type: "SUCCESS_GET_ALL_TRANSACTION",
+          payload: response.data,
+        });
       })
       .catch(function (error) {
         console.log(error);

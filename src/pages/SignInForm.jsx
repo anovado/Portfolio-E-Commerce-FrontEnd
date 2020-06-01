@@ -3,17 +3,15 @@ import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 import { doLogin, changeInputUser } from "../store/actions/actionUser";
 
-
 class SignInForm extends Component {
-
   // function to handle signin
   postLogin = async () => {
     await this.props.doLogin();
     const isLogin = this.props.login;
     const status = localStorage.getItem("status");
-    if (isLogin && (status !== "admin")) {
+    if (isLogin && status !== "admin") {
       this.props.history.push("/categories");
-    } else if (isLogin && (status === "admin")) {
+    } else if (isLogin && status === "admin") {
       this.props.history.push("/dashboard");
     }
   };
@@ -31,19 +29,44 @@ class SignInForm extends Component {
                     <h3 className="login-heading mb-4">Welcome back!</h3>
                     <form onSubmit={(e) => e.preventDefault()}>
                       <div className="form-label-group">
-                        <input type="text" id="inputUsername" className="form-control" name="namaPengguna" placeholder="Username" onChange={(e) => this.props.changeInput(e)} required autoFocus />
+                        <input
+                          type="text"
+                          id="inputUsername"
+                          className="form-control"
+                          name="namaPengguna"
+                          placeholder="Username"
+                          onChange={(e) => this.props.changeInput(e)}
+                          required
+                          autoFocus
+                        />
                         <label htmlFor="inputUsername">Username</label>
                       </div>
 
                       <div className="form-label-group">
-                        <input type="password" id="inputPassword" className="form-control" name="kataKunci" placeholder="Password" onChange={(e) => this.props.changeInput(e)} required />
+                        <input
+                          type="password"
+                          id="inputPassword"
+                          className="form-control"
+                          name="kataKunci"
+                          placeholder="Password"
+                          onChange={(e) => this.props.changeInput(e)}
+                          required
+                        />
                         <label htmlFor="inputPassword">Password</label>
                       </div>
 
-                      <button className="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2" onClick={() => this.postLogin()} type="submit">Sign in</button>
+                      <button
+                        className="btn btn-lg btn-primary btn-block btn-login text-uppercase font-weight-bold mb-2"
+                        onClick={() => this.postLogin()}
+                        type="submit"
+                      >
+                        Sign in
+                      </button>
 
                       <div className="text-center">
-                        <Link className="small" to="/signup">Don't have an account? Sign Up</Link>
+                        <Link className="small" to="/signup">
+                          Don't have an account? Sign Up
+                        </Link>
                       </div>
                     </form>
                   </div>
@@ -53,18 +76,15 @@ class SignInForm extends Component {
           </div>
         </div>
       </div>
-    )
+    );
   }
-};
-
-
+}
 
 const mapStateToProps = (state) => {
   return {
     namaPengguna: state.user.namaPengguna,
     kataKunci: state.user.kataKunci,
     login: state.user.isLogin,
-    // status: state.user.status,
   };
 };
 
@@ -74,4 +94,3 @@ const mapDispatchToProps = {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(SignInForm);
-// export default SignInForm;

@@ -1,14 +1,12 @@
 import React from "react";
-import { Link } from "react-router-dom";
-// import { BrowserRouter } from 'react-router-dom';
 
 const JoinUs = (props) => {
-
   return (
-
     <section className="contact bg-secondary mt-5" id="contact">
       <div className="container py-5">
-        <h2>We <i className="fas fa-heart"></i> new friends!</h2>
+        <h2>
+          We <i className="fas fa-heart"></i> new friends!
+        </h2>
         <ul className="list-inline list-social ">
           <li className="list-inline-item social-twitter">
             <a href="https://twitter.com" target="blank">
@@ -28,7 +26,7 @@ const JoinUs = (props) => {
         </ul>
       </div>
     </section>
-  )
+  );
 };
 
 export default JoinUs;

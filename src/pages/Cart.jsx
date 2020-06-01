@@ -73,7 +73,7 @@ class Cart extends Component {
                   </Fragment>
                 )
               })}
-              <li className="totalRow bttn btn text-center" onClick={(e) => this.checkedOut(e)} style={{ backgroundColor: "#B1B1B1", borderRadius: "5px" }} >Checkout</li>
+              <li className="totalRow bttn btn btn-secondary text-center" onClick={(e) => this.checkedOut(e)} style={{ borderRadius: "5px" }} >Checkout</li>
             </ul>
           </div>
         </div>

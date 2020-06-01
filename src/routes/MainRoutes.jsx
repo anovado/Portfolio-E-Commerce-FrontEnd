@@ -27,9 +27,9 @@ const MainRoutes = () => {
                     <Route exact path="/" component={Home} />
                     <Route exact path="/categories" component={Categories} />
                     <Route exact path="/signin" component={SignInForm} />
-                    <Route exact path="/cart" component={Cart} />
                     <Route exact path="/signup" component={SignUpForm} />
                     <Route exact path="/productinput" component={ProductInput} />
+                    <Route exact path="/cart" component={Cart} />
                     <Route exact path="/profile" component={Profile} />
                     <Route exact path="/editprofile" component={ProfileInput} />
                     <Route exact path="/dashboard" component={Dashboard} />
