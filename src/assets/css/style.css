@@ -987,6 +987,20 @@ form .form-group input {
 
 /* CART PAGE */
 
+.tombolplusmin {
+  border-radius: 100%;
+  margin: 0 10px;
+  background-color: black;
+  color: pink;
+  font-size: 20px;
+  /* border: none; */
+}
+
+.qty-updated {
+  border: 1px grey solid;
+  padding: 2px 7px;
+}
+
 .cf:before,
 .cf:after {
   content: " ";
@@ -1165,7 +1179,7 @@ form .form-group input {
   margin: 1em 0.5em 0 0;
 }
 .cart .items .cartSection .itemImg {
-  width: 8em;
+  /* width: 8em; */
   display: inline;
   padding-right: 1em;
 }
@@ -1382,4 +1396,36 @@ a.remove:hover {
 
 #dasboard-body {
   background-image: linear-gradient(to bottom right, red, yellow);
+}
+
+.from-input-in-dashboard {
+  height: 50px !important;
+}
+
+.box-of-client {
+  padding: 20px;
+  background-color: rgba(238, 151, 111, 0.9);
+  border-radius: 16px;
+  /* margin: 10px; */
+}
+
+.button-delete-client {
+  padding: 5px 10px;
+  background-color: brown;
+  color: white;
+  border-radius: 8px;
+}
+
+.button-delete-client:hover {
+  padding: 5px 10px;
+  background-color: rgba(228, 230, 129, 0.8);
+  color: black;
+  border-radius: 8px;
+}
+
+.detail-client {
+  font-size: 25px;
+  font-weight: 400;
+  margin: 0;
+  padding: 0;
 }

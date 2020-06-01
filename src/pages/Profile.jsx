@@ -23,6 +23,9 @@ class Profile extends Component {
     if (localStorage.getItem("status") === "baker") {
       await this.props.getProductBaker();
     }
+    if (this.props.name === "") {
+      this.props.history.push("/editprofile");
+    }
   };
 
   componentDidUpdate = async () => {
@@ -46,11 +49,13 @@ class Profile extends Component {
   render() {
     const status = localStorage.getItem("status");
     const products = this.props.productSeller;
-    console.log("products from seller", products);
+    // const profileName = this.props.name;
+    // console.log("products from seller", products);
     return (
       <div>
         <Header {...this.props} />
         <div style={{ height: "80px" }}></div>
+        {/* {profileName === ""} */}
         <section className="mt-5">
           <div className="container pb-5 my-5 container-profile-data">
             <div
@@ -321,11 +326,6 @@ class Profile extends Component {
         ) : (
           false
         )}
-        {/* {status === "baker" ? (
-          
-        ) : (
-          false
-        )} */}
 
         <JoinUs />
         <Footer />
@@ -341,6 +341,7 @@ const mapStateToProps = (state) => {
     dataTransaction: state.cart.dataCart,
     productSeller: state.product.productSeller,
     deleted: state.product.deleted,
+    name: state.user.name,
   };
 };
 

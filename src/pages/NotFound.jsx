@@ -5,9 +5,15 @@ class NotFound extends Component {
   render() {
     return (
       <div id="container jumbotron-background">
-        <img src={"https://cdn.dribbble.com/users/1661862/screenshots/5931432/404-preview.jpg"} id="main-bg" alt="" />
-        <Link to="/categories"><button className="top-right btn ">Go back to the bakery </button></Link>
-
+        <img
+          className=" py-5 px-5"
+          src={require("../assets/images/404-preview.jpg")}
+          id="main-bg"
+          alt="404"
+        />
+        <Link to="/categories">
+          <button className="top-right btn ">Go back to the bakery </button>
+        </Link>
       </div>
     );
   }

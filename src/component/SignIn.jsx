@@ -6,11 +6,12 @@ const SignIn = (props, postLogin) => {
   postLogin = async () => {
     await props.doLogin();
     const isLogin = props.login;
+    console.log("islogin", isLogin);
     const status = localStorage.getItem("status");
     if (isLogin && status !== "admin") {
-      this.props.history.push("/categories");
+      props.history.push("/categories");
     } else if (isLogin && status === "admin") {
-      this.props.history.push("/dashboard");
+      props.history.push("/dashboard");
     }
   };
 
@@ -43,7 +44,7 @@ const SignIn = (props, postLogin) => {
             <Link
               id="send-btn"
               className="px-3"
-              to="/"
+              to="#"
               onClick={() => postLogin()}
               type="submit"
             >

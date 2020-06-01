@@ -5,6 +5,9 @@ import { connect } from "react-redux";
 import Header from "../component/Header";
 import Footer from "../component/Footer";
 import {
+  postProductType,
+  postPaymentMethod,
+  postShippingMethod,
   changeInputClient,
   getClientData,
   deleteClient,
@@ -12,248 +15,210 @@ import {
 import { doLogOut } from "../store/actions/actionUser";
 
 class Dashboard extends Component {
+  componentDidMount = async () => {
+    window.scrollTo(0, 0);
+    await this.props.getClientData();
+  };
+
+  componentDidUpdate = async () => {
+    if (this.props.deleted) {
+      await this.props.getClientData();
+    }
+  };
+
+  postProductType = async () => {
+    await this.props.postProductType();
+    (await this.props.statusError)
+      ? alert("Your attempt was failed, please try again.")
+      : this.props.history.push("/dashboard");
+  };
+
+  postPayment = async () => {
+    await this.props.postPaymentMethod();
+    (await this.props.statusError)
+      ? alert("Your attempt was failed, please try again.")
+      : this.props.history.push("/dashboard");
+  };
+
+  postShipping = async () => {
+    await this.props.postShippingMethod();
+    (await this.props.statusError)
+      ? alert("Your attempt was failed, please try again.")
+      : this.props.history.push("/dashboard");
+  };
+
   render() {
+    const allClients = this.props.allClients;
     return (
       <div style={{}} id="dashboard-body">
         <Header {...this.props} />
-        <div style={{ height: "10rem" }}></div>
-        <div className="page-wrapper bg-gra-03 sidebar">
+        <div style={{ height: "7rem" }}></div>
+        <div className="page-wrapper bg-gra-03 sidebar mb-5">
           <h2>DASHBOARD ADMIN</h2>
-          <div
-            className="container"
-            style={{
-              backgroundColor: "rgb(251, 199, 199)",
-              color: "white",
-              borderRadius: "15px",
-            }}
+          <ul
+            className="nav nav-tabs mt-5 d-flex justify-content-center"
+            id="myTab"
+            role="tablist"
           >
-            <div className="row">
-              <div className="wrapper center-block hidden-xs">
-                <div className="filters-text"></div>
-                <div
-                  className="panel-group"
-                  id="accordion"
-                  role="tablist"
-                  aria-multiselectable="true"
+            <li className="nav-item">
+              <a
+                className="nav-link active"
+                id="home-tab"
+                data-toggle="tab"
+                href="#home"
+                role="tab"
+                aria-controls="home"
+                aria-selected="true"
+              >
+                Post New Product Type
+              </a>
+            </li>
+            <li className="nav-item">
+              <a
+                className="nav-link"
+                id="profile-tab"
+                data-toggle="tab"
+                href="#profile"
+                role="tab"
+                aria-controls="profile"
+                aria-selected="false"
+              >
+                Post New Payment Method
+              </a>
+            </li>
+            <li className="nav-item">
+              <a
+                className="nav-link"
+                id="contact-tab"
+                data-toggle="tab"
+                href="#contact"
+                role="tab"
+                aria-controls="contact"
+                aria-selected="false"
+              >
+                Post New Shipping Method
+              </a>
+            </li>
+            <li className="nav-item">
+              <a
+                className="nav-link"
+                id="client-tab"
+                data-toggle="tab"
+                href="#client"
+                role="tab"
+                aria-controls="client"
+                aria-selected="false"
+              >
+                Get All Clients
+              </a>
+            </li>
+          </ul>
+          <div className="tab-content" id="myTabContent">
+            <div
+              className="tab-pane fade show active"
+              id="home"
+              role="tabpanel"
+              aria-labelledby="home-tab"
+            >
+              <div className="container mt-5">
+                <input
+                  type="text"
+                  id="inputProductType"
+                  className="form-control form-input-in-dashboard"
+                  name="productType"
+                  placeholder="Post new product type"
+                  onChange={(e) => this.props.changeInput(e)}
+                  required
+                  autoFocus
+                />
+                <button
+                  color="secondary"
+                  className="bttn btn mt-4"
+                  onClick={() => this.postProductType()}
                 >
-                  <div className="panel panel-default mb-2">
-                    <div className="panel-heading" role="tab" id="heading1">
-                      <h4 className="panel-title">
-                        <a
-                          className="collapsed"
-                          role="button"
-                          data-toggle="collapse"
-                          data-parent="#accordion"
-                          href="#collapse1"
-                          aria-expanded="false"
-                          aria-controls="collapse1"
-                        >
-                          POST PRODUCT TYPE
-                        </a>
-                      </h4>
-                    </div>
+                  Submit
+                </button>
+              </div>
+            </div>
+            <div
+              className="tab-pane fade"
+              id="profile"
+              role="tabpanel"
+              aria-labelledby="profile-tab"
+            >
+              <div className="container mt-5">
+                <input
+                  type="text"
+                  id="inputUsername"
+                  className="form-control"
+                  name="paymentMethod"
+                  placeholder="Post new payment method"
+                  onChange={(e) => this.props.changeInput(e)}
+                  required
+                  autoFocus
+                />
+                <button
+                  color="secondary"
+                  className="bttn btn mt-4"
+                  onClick={() => this.postPayment()}
+                >
+                  Submit
+                </button>
+              </div>
+            </div>
+            <div
+              className="tab-pane fade"
+              id="contact"
+              role="tabpanel"
+              aria-labelledby="contact-tab"
+            >
+              <div className="container mt-5">
+                <input
+                  type="text"
+                  id="inputUsername"
+                  className="form-control"
+                  name="shippingMethod"
+                  placeholder="Post new shipping method"
+                  onChange={(e) => this.props.changeInput(e)}
+                  required
+                  autoFocus
+                />
+                <button
+                  color="secondary"
+                  className="bttn btn mt-4"
+                  onClick={() => this.postShipping()}
+                >
+                  Submit
+                </button>
+              </div>
+            </div>
+            <div
+              className="tab-pane fade"
+              id="client"
+              role="tabpanel"
+              aria-labelledby="client-tab"
+            >
+              <div className="container mt-5">
+                <div className="row">
+                  {allClients.map((el, index) => (
                     <div
-                      id="collapse1"
-                      className="panel-collapse collapse"
-                      role="tabpanel"
-                      aria-labelledby="heading1"
+                      className="col-lg-2 box-of-client my-2 mx-3"
+                      key={index}
                     >
-                      <div className="panel-body mt-3">
-                        <div className="form-label-group">
-                          <input
-                            type="text"
-                            id="inputUsername"
-                            className="form-control"
-                            name="productType"
-                            placeholder="Product Type"
-                            onChange={(e) => this.props.changeInput(e)}
-                            required
-                            autoFocus
-                          />
-                          <label htmlFor="inputUsername">Product Type</label>
-                        </div>
-                        <button type="submit" className="btn">
-                          Submit
-                        </button>
-                      </div>
+                      <p className="mb-0">username:</p>
+                      <p className="detail-client mt-0 mb-3">{el.username}</p>
+                      <p className="mb-0">status:</p>
+                      <p className="detail-client mt-0 mb-3">{el.status}</p>
+                      <button
+                        to="#"
+                        className="btn text-left button-delete-client"
+                        value={el.id}
+                        onClick={(e) => this.props.deleteClient(e.target.value)}
+                      >
+                        Delete Client
+                      </button>
                     </div>
-                  </div>
-
-                  <div className="panel panel-default mb-2">
-                    <div className="panel-heading" role="tab" id="heading1">
-                      <h4 className="panel-title">
-                        <a
-                          className="collapsed"
-                          role="button"
-                          data-toggle="collapse"
-                          data-parent="#accordion"
-                          href="#collapse1"
-                          aria-expanded="false"
-                          aria-controls="collapse1"
-                        >
-                          POST PAYMENT METHOD
-                        </a>
-                      </h4>
-                    </div>
-                    <div
-                      id="collapse1"
-                      className="panel-collapse collapse"
-                      role="tabpanel"
-                      aria-labelledby="heading1"
-                    >
-                      <div className="panel-body">
-                        <div className="form-label-group">
-                          <input
-                            type="text"
-                            className="form-control inputUsername"
-                            name="paymentMethod"
-                            placeholder="Payment Method"
-                            onChange={(e) => this.props.changeInput(e)}
-                            required
-                            autoFocus
-                          />
-                          <label htmlFor="inputUsername">Payment Method</label>
-                        </div>
-                        <button type="submit" className="btn">
-                          Submit
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="panel panel-default mb-2">
-                    <div className="panel-heading" role="tab" id="heading1">
-                      <h4 className="panel-title">
-                        <a
-                          className="collapsed"
-                          role="button"
-                          data-toggle="collapse"
-                          data-parent="#accordion"
-                          href="#collapse1"
-                          aria-expanded="false"
-                          aria-controls="collapse1"
-                        >
-                          POST SHIPPING METHOD
-                        </a>
-                      </h4>
-                    </div>
-                    <div
-                      id="collapse1"
-                      className="panel-collapse collapse"
-                      role="tabpanel"
-                      aria-labelledby="heading1"
-                    >
-                      <div className="panel-body">
-                        <div className="form-label-group">
-                          <input
-                            type="text"
-                            className="form-control inputUsername"
-                            name="shippingMethod"
-                            placeholder="Shipping Method"
-                            onChange={(e) => this.props.changeInput(e)}
-                            required
-                            autoFocus
-                          />
-                          <label htmlFor="inputUsername">Shipping Method</label>
-                        </div>
-                        <button type="submit" className="btn">
-                          Submit
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="panel panel-default mb-2">
-                    <div className="panel-heading" role="tab" id="heading1">
-                      <h4 className="panel-title">
-                        <a
-                          className="collapsed"
-                          role="button"
-                          data-toggle="collapse"
-                          data-parent="#accordion"
-                          href="#collapse1"
-                          aria-expanded="false"
-                          aria-controls="collapse1"
-                        >
-                          GET ALL CLIENT
-                        </a>
-                      </h4>
-                    </div>
-                    <div
-                      id="collapse1"
-                      className="panel-collapse collapse"
-                      role="tabpanel"
-                      aria-labelledby="heading1"
-                    >
-                      <div className="panel-body">
-                        <div className="form-label-group">
-                          <input
-                            type="text"
-                            onChange={(e) => this.props.changeInput(e)}
-                            className="form-control inputUsername"
-                            name="categoryName"
-                            placeholder="Get Client Data"
-                            required
-                            autoFocus
-                          />
-                          <label htmlFor="inputUsername">
-                            Filter untuk get data client
-                          </label>
-                        </div>
-                        <button
-                          type="submit"
-                          onClick={() => this.props.getClients}
-                          className="btn"
-                        >
-                          Submit
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className="panel panel-default mb-2">
-                    <div className="panel-heading" role="tab" id="heading1">
-                      <h4 className="panel-title">
-                        <a
-                          className="collapsed"
-                          role="button"
-                          data-toggle="collapse"
-                          data-parent="#accordion"
-                          href="#collapse1"
-                          aria-expanded="false"
-                          aria-controls="collapse1"
-                        >
-                          DELETE CLIENT
-                        </a>
-                      </h4>
-                    </div>
-                    <div
-                      id="collapse1"
-                      className="panel-collapse collapse"
-                      role="tabpanel"
-                      aria-labelledby="heading1"
-                    >
-                      <div className="panel-body">
-                        <div className="form-label-group">
-                          <input
-                            type="text"
-                            className="form-control inputUsername"
-                            name="shippingMethod"
-                            placeholder="Shipping Method"
-                            onChange={(e) => this.props.changeInput(e)}
-                            required
-                            autoFocus
-                          />
-                          <label htmlFor="inputUsername">
-                            Input client id to delete
-                          </label>
-                        </div>
-                        <button type="submit" className="btn">
-                          Submit
-                        </button>
-                      </div>
-                    </div>
-                  </div>
+                  ))}
                 </div>
               </div>
             </div>
@@ -268,16 +233,20 @@ class Dashboard extends Component {
 const mapStateToProps = (state) => {
   return {
     login: state.user.isLogin,
-    // status: state.user.status,
+    statusError: state.dashboard.statusError,
+    allClients: state.dashboard.allClients,
+    deleted: state.dashboard.deleted,
   };
 };
 
 const mapDispatchToProps = {
   changeInput: (e) => changeInputClient(e),
-  getClients: (e) => getClientData(e),
+  getClientData,
   deleteClient,
   doLogOut,
+  postProductType,
+  postPaymentMethod,
+  postShippingMethod,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);
-// export default SignInForm;

@@ -32,7 +32,7 @@ export const getProductData = (props) => {
 // function to post product data
 export const postProductData = (props) => {
   return async (dispatch, getState) => {
-    const category = getState().product.product_type_id;
+    // const category = getState().product.product_type_id;
     const promo = getState().product.promo;
     let input;
     if (promo === "true") {

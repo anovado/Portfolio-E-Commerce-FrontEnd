@@ -1,16 +1,7 @@
 import React, { Fragment } from "react";
 import { Link } from "react-router-dom";
-// import { BrowserRouter } from 'react-router-dom';
 
 const Header = (props, postSignout) => {
-  // const changeRouterProfile = async (category) => {
-  //   if (props.getData) {
-  //     props.getData()
-  //   } else {
-  //     props.history.replace("/")
-  //   }
-  // }
-
   // function to logout
   postSignout = async () => {
     await props.doLogOut();
@@ -19,7 +10,7 @@ const Header = (props, postSignout) => {
 
   const isLogin = localStorage.getItem("isLogin");
   const status = localStorage.getItem("status");
-  // isLogin = props.dataUser !== undefined && props.dataUser.isLogin !== undefined ? props.dataUser.isLogin : false
+
   return (
     <div>
       <nav

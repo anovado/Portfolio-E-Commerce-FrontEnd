@@ -4,6 +4,13 @@ import { connect } from "react-redux";
 import { doLogin, changeInputUser } from "../store/actions/actionUser";
 
 class SignInForm extends Component {
+  componentDidMount = async () => {
+    const isLogin = localStorage.getItem("isLogin");
+    if (isLogin) {
+      this.props.history.push("/categories");
+    }
+  };
+
   // function to handle signin
   postLogin = async () => {
     await this.props.doLogin();

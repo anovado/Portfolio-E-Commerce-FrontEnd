@@ -12,7 +12,6 @@ const initialState = {
   discount: 0,
   image: "",
   product_type_id: 0,
-  //   deleted: false,
 };
 
 export default function productReducer(productState = initialState, action) {

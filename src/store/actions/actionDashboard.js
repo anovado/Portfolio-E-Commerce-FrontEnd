@@ -1,56 +1,110 @@
 import axios from "axios";
 
-
-// // function to get client's data
-// export const getClientData = (props) => {
-//   return async (dispatch, getState) => {
-//     // const status = localStorage.getItem("status");
-//     const token = localStorage.getItem("token");
-
-//     await axios
-//       .get("http://0.0.0.0:5050/client", {
-//         headers: {
-//           "Content-Type": "application/json; charset=utf-8",
-//           Accept: "application/json; charset=utf-8",
-//           Authorization: `Bearer ${token}`,
-//         }
-//       })
-//       .then(async (response) => {
-//         dispatch({ type: "GET_ALL_CLIENT_DATA", payload: response.data });
-
-//       })
-//       .catch((error) => {
-//         console.log(error)
-//       })
-
-//   };
-// };
-
-
-// function to handle get products by category
-export const getClientData = (categoryName) => {
-  return async (dispatch) => {
-    const response = await axios.get("http://0.0.0.0:5050/client");
-    const filterCategory = response.data.filter((item) => {
-      if ((item.status === categoryName) || (item.username === categoryName)) {
-        return item
-      } else {
-        return false
-      }
-    })
-    dispatch({
-      type: "GET_ALL_CLIENT_DATA",
-      payload: filterCategory,
-    });
+// function to post product type
+export const postProductType = () => {
+  return async (dispatch, getState) => {
+    const token = localStorage.getItem("token");
+    const bodyRequest = {
+      name: getState().dashboard.paymentMethod,
+    };
+    const myJSON = JSON.stringify(bodyRequest);
+    await axios
+      .post("http://0.0.0.0:5050/product_type", myJSON, {
+        headers: {
+          "Content-Type": "application/json; charset=utf-8",
+          Accept: "application/json; charset=utf-8",
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then(async (response) => {
+        dispatch({ type: "SUCCESS_POST" });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   };
 };
 
+// function to post payment metehod
+export const postPaymentMethod = () => {
+  return async (dispatch, getState) => {
+    const token = localStorage.getItem("token");
+    const bodyRequest = {
+      name: getState().dashboard.paymentMethod,
+    };
+    const myJSON = JSON.stringify(bodyRequest);
+    await axios
+      .post("http://0.0.0.0:5050/payment_method", myJSON, {
+        headers: {
+          "Content-Type": "application/json; charset=utf-8",
+          Accept: "application/json; charset=utf-8",
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then(async (response) => {
+        dispatch({ type: "SUCCESS_POST" });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
+};
 
-export const deleteClient = (item) => {
+// function to post shipping method
+export const postShippingMethod = () => {
+  return async (dispatch, getState) => {
+    const token = localStorage.getItem("token");
+    const bodyRequest = {
+      courier: getState().dashboard.shippingMethod,
+    };
+    const myJSON = JSON.stringify(bodyRequest);
+    await axios
+      .post("http://0.0.0.0:5050/shipping", myJSON, {
+        headers: {
+          "Content-Type": "application/json; charset=utf-8",
+          Accept: "application/json; charset=utf-8",
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then(async (response) => {
+        dispatch({ type: "SUCCESS_POST" });
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
+  };
+};
+
+// function to get client's data
+export const getClientData = (props) => {
+  return async (dispatch, getState) => {
+    // const status = localStorage.getItem("status");
+    const token = localStorage.getItem("token");
+
+    await axios
+      .get("http://0.0.0.0:5050/client", {
+        headers: {
+          "Content-Type": "application/json; charset=utf-8",
+          Accept: "application/json; charset=utf-8",
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then(async (response) => {
+        dispatch({ type: "GET_ALL_CLIENT_DATA", payload: response.data });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
+};
+
+// function to delete client
+export const deleteClient = (id) => {
   return async (dispatch) => {
     const token = localStorage.getItem("token");
+    console.log("id dalam action", id);
     await axios
-      .delete("http://0.0.0.0:5050/client/" + item, {
+      .delete("http://0.0.0.0:5050/client/" + id, {
         headers: {
           "Content-Type": "application/json; charset=utf-8",
           Accept: "application/json; charset=utf-8",
@@ -73,4 +127,3 @@ export const changeInputClient = (e) => {
     payload: e,
   };
 };
-
