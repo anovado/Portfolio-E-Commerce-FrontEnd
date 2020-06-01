@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-// import { Link } from "react-router-dom";
 import { connect } from "react-redux";
 
 import Header from "../component/Header";
@@ -20,8 +19,6 @@ class Categories extends Component {
   componentDidMount = async () => {
     window.scrollTo(0, 0);
     this.props.getProductData();
-    // const paramCategory = await this.props.match.params.category;
-    // this.props.getRes(paramCategory);
   };
 
   // redux function to change router and request movies by Category
@@ -33,13 +30,6 @@ class Categories extends Component {
   };
 
   render() {
-    // const allProductsData = this.props.allProducts.filter((item) => {
-    //   if (item.name !== null) {
-    //     return item;
-    //   }
-    //   return false;
-    // });
-
     return (
       <div>
         <Header {...this.props} />
