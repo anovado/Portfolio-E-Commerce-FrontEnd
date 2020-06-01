@@ -98,23 +98,44 @@ export const checkOut = () => {
 export const getHistoryTransaction = () => {
   return async (dispatch) => {
     const token = localStorage.getItem("token");
-    await axios
-      .get("http://0.0.0.0:5050/cart/checkout", {
-        headers: {
-          "Content-Type": "application/json; charset=utf-8",
-          Accept: "application/json; charset=utf-8",
-          Authorization: `Bearer ${token}`,
-        },
-      })
-      .then(async (response) => {
-        dispatch({
-          type: "SUCCESS_GET_ALL_TRANSACTION",
-          payload: response.data,
+    const status = localStorage.getItem("status");
+    if (status === "baker") {
+      await axios
+        .get("http://0.0.0.0:5050/cart/checkout", {
+          headers: {
+            "Content-Type": "application/json; charset=utf-8",
+            Accept: "application/json; charset=utf-8",
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then(async (response) => {
+          dispatch({
+            type: "SUCCESS_GET_ALL_TRANSACTION",
+            payload: response.data,
+          });
+        })
+        .catch(function (error) {
+          console.log(error);
         });
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+    } else {
+      await axios
+        .get("http://0.0.0.0:5050/cart/history", {
+          headers: {
+            "Content-Type": "application/json; charset=utf-8",
+            Accept: "application/json; charset=utf-8",
+            Authorization: `Bearer ${token}`,
+          },
+        })
+        .then(async (response) => {
+          dispatch({
+            type: "SUCCESS_GET_ALL_TRANSACTION",
+            payload: response.data,
+          });
+        })
+        .catch(function (error) {
+          console.log(error);
+        });
+    }
   };
 };
 

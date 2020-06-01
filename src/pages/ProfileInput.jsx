@@ -11,9 +11,13 @@ import {
 } from "../store/actions/actionUser";
 
 class ProfileInput extends Component {
+  componentDidMount = async () => {
+    window.scrollTo(0, 0);
+  };
+
   editFormData = async () => {
     await this.props.postUserData();
-    (await this.props.dataUser.statusError)
+    (await this.props.statusError)
       ? alert("Your attempt was failed, please try again.")
       : this.props.history.push("/profile");
   };
@@ -144,9 +148,7 @@ const mapStateToProps = (state) => {
     postal_code: state.user.postal_code,
     street: state.user.street,
     phone: state.user.phone,
-    // namaPengguna: state.user.namaPengguna,
-    // kataKunci: state.user.kataKunci,
-    // login: state.user.isLogin,
+    statusError: state.user.statusError,
   };
 };
 

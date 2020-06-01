@@ -1,13 +1,12 @@
-
 const initialState = {
-  username: '',
-  email: '',
-  password: '',
-  status: '',
-  token: '',
+  username: "",
+  email: "",
+  password: "",
+  status: "",
+  token: "",
   isLogin: false,
-  namaPengguna: '',
-  kataKunci: '',
+  namaPengguna: "",
+  kataKunci: "",
   statusError: true,
   name: "",
   province: "",
@@ -15,7 +14,7 @@ const initialState = {
   postal_code: "",
   city_type: "kota",
   street: "",
-  phone: ""
+  phone: "",
 };
 
 export default function userReducer(userState = initialState, action) {
@@ -23,30 +22,30 @@ export default function userReducer(userState = initialState, action) {
     case "CHANGE_INPUT_USER":
       return {
         ...userState,
-        [action.payload.target.name]: action.payload.target.value
-      }
+        [action.payload.target.name]: action.payload.target.value,
+      };
     case "SUCCESS_LOGIN":
       return {
         ...userState,
         username: action.payload.username,
         token: action.payload.token,
-        isLogin: true
-      }
+        isLogin: true,
+      };
     case "LOGOUT":
       return {
         ...userState,
-        isLogin: false
-      }
+        isLogin: false,
+      };
     case "SUCESS_SIGNUP":
       return {
         ...userState,
-        statusError: false
-      }
+        statusError: false,
+      };
     case "CHANGE_ACCOUNT_TYPE":
       return {
         ...userState,
         status: action.payload.target.value,
-      }
+      };
     case "GET_USER_DATA":
       return {
         ...userState,
@@ -57,12 +56,12 @@ export default function userReducer(userState = initialState, action) {
         postal_code: action.payload.postal_code,
         street: action.payload.street,
         phone: action.payload.phone,
-      }
-    case "POST_USER_DATA":
+      };
+    case "SUCCESS_EDIT_DATA":
       return {
         ...userState,
-        statusError: false
-      }
+        statusError: false,
+      };
     default:
       return userState;
   }

@@ -9,7 +9,7 @@ export const doLogin = (props) => {
       params: {
         username: getState().user.namaPengguna,
         password: getState().user.kataKunci,
-      }
+      },
     })
       .then(async (response) => {
         if (response.data.hasOwnProperty("token")) {
@@ -20,8 +20,8 @@ export const doLogin = (props) => {
         }
       })
       .catch(async () => {
-        await alert("Password atau Username anda salah!")
-      })
+        await alert("Password atau Username anda salah!");
+      });
   };
 };
 
@@ -33,33 +33,30 @@ export const changeInputUser = (e) => {
   };
 };
 
-
 // function to signup
 export const doSignUp = (props) => {
   return async (dispatch, getState) => {
     const bodyRequest = {
       username: getState().user.namaPengguna,
       password: getState().user.kataKunci,
-      status: getState().user.status
-    }
+      status: getState().user.status,
+    };
     const myJSON = JSON.stringify(bodyRequest);
     await axios
       .post("http://0.0.0.0:5050/client", myJSON, {
         headers: {
           "Content-Type": "application/json; charset=utf-8",
-          Accept: "application/json; charset=utf-8"
-        }
+          Accept: "application/json; charset=utf-8",
+        },
       })
       .then(async (response) => {
         dispatch({ type: "SUCCESS_SIGNUP" });
-
       })
       .catch((error) => {
-        console.log(error)
-      })
+        console.log(error);
+      });
   };
 };
-
 
 // function to logout
 export const doLogOut = (e) => {
@@ -68,20 +65,17 @@ export const doLogOut = (e) => {
   localStorage.removeItem("status");
   return {
     type: "LOGOUT",
-    payload: e
-  }
+    payload: e,
+  };
 };
-
 
 // function to get account type value in registration form
 export const changeAccountType = (e) => {
-
   return {
     type: "CHANGE_ACCOUNT_TYPE",
     payload: e,
   };
 };
-
 
 // function to get user's data
 export const getUserData = (props) => {
@@ -95,15 +89,14 @@ export const getUserData = (props) => {
             "Content-Type": "application/json; charset=utf-8",
             Accept: "application/json; charset=utf-8",
             Authorization: `Bearer ${token}`,
-          }
+          },
         })
         .then(async (response) => {
           dispatch({ type: "GET_USER_DATA", payload: response.data });
-
         })
         .catch((error) => {
-          console.log(error)
-        })
+          console.log(error);
+        });
     } else if (status === "baker") {
       await axios
         .get("http://0.0.0.0:5050/baker/profile", {
@@ -111,23 +104,22 @@ export const getUserData = (props) => {
             "Content-Type": "application/json; charset=utf-8",
             Accept: "application/json; charset=utf-8",
             Authorization: `Bearer ${token}`,
-          }
+          },
         })
         .then(async (response) => {
           dispatch({ type: "GET_USER_DATA", payload: response.data });
-
         })
         .catch((error) => {
-          console.log(error)
-        })
+          console.log(error);
+        });
     }
   };
 };
 
-
 // function to post user's data
 export const postUserData = (props) => {
   return async (dispatch, getState) => {
+    const content = getState().user.name;
     const bodyRequest = {
       name: getState().user.name,
       email: getState().user.email,
@@ -137,43 +129,74 @@ export const postUserData = (props) => {
       city_type: getState().user.city_type,
       street: getState().user.street,
       phone: getState().user.phone,
-    }
+    };
     const myJSON = JSON.stringify(bodyRequest);
     const status = localStorage.getItem("status");
     const token = localStorage.getItem("token");
-
-    if (status === "buyer") {
-      await axios
-        .post("http://0.0.0.0:5050/customer/profile", myJSON, {
-          headers: {
-            "Content-Type": "application/json; charset=utf-8",
-            Accept: "application/json; charset=utf-8",
-            Authorization: `Bearer ${token}`,
-          }
-        })
-        .then(async (response) => {
-          dispatch({ type: "POST_USER_DATA" });
-
-        })
-        .catch((error) => {
-          console.log(error)
-        })
-    } else if (status === "baker") {
-      await axios
-        .post("http://0.0.0.0:5050/baker/profile", myJSON, {
-          headers: {
-            "Content-Type": "application/json; charset=utf-8",
-            Accept: "application/json; charset=utf-8",
-            Authorization: `Bearer ${token}`,
-          }
-        })
-        .then(async (response) => {
-          dispatch({ type: "POST_USER_DATA" });
-
-        })
-        .catch((error) => {
-          console.log(error)
-        })
+    if (content === []) {
+      if (status === "buyer") {
+        await axios
+          .post("http://0.0.0.0:5050/customer/profile", myJSON, {
+            headers: {
+              "Content-Type": "application/json; charset=utf-8",
+              Accept: "application/json; charset=utf-8",
+              Authorization: `Bearer ${token}`,
+            },
+          })
+          .then(async (response) => {
+            dispatch({ type: "SUCCESS_EDIT_DATA" });
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      } else if (status === "baker") {
+        await axios
+          .post("http://0.0.0.0:5050/baker/profile", myJSON, {
+            headers: {
+              "Content-Type": "application/json; charset=utf-8",
+              Accept: "application/json; charset=utf-8",
+              Authorization: `Bearer ${token}`,
+            },
+          })
+          .then(async (response) => {
+            dispatch({ type: "SUCCESS_EDIT_DATA" });
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }
+    } else {
+      if (status === "buyer") {
+        await axios
+          .patch("http://0.0.0.0:5050/customer/profile", myJSON, {
+            headers: {
+              "Content-Type": "application/json; charset=utf-8",
+              Accept: "application/json; charset=utf-8",
+              Authorization: `Bearer ${token}`,
+            },
+          })
+          .then(async (response) => {
+            dispatch({ type: "SUCCESS_EDIT_DATA" });
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      } else if (status === "baker") {
+        await axios
+          .patch("http://0.0.0.0:5050/baker/profile", myJSON, {
+            headers: {
+              "Content-Type": "application/json; charset=utf-8",
+              Accept: "application/json; charset=utf-8",
+              Authorization: `Bearer ${token}`,
+            },
+          })
+          .then(async (response) => {
+            dispatch({ type: "SUCCESS_EDIT_DATA" });
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      }
     }
   };
 };

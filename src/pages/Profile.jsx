@@ -49,13 +49,12 @@ class Profile extends Component {
   render() {
     const status = localStorage.getItem("status");
     const products = this.props.productSeller;
-    // const profileName = this.props.name;
-    // console.log("products from seller", products);
+    console.log("history", this.props.dataTransaction);
     return (
       <div>
         <Header {...this.props} />
         <div style={{ height: "80px" }}></div>
-        {/* {profileName === ""} */}
+
         <section className="mt-5">
           <div className="container pb-5 my-5 container-profile-data">
             <div
@@ -324,7 +323,117 @@ class Profile extends Component {
             </div>
           </Fragment>
         ) : (
-          false
+          <Fragment>
+            <ul
+              className="nav nav-tabs d-flex justify-content-center"
+              id="myTab"
+              role="tablist"
+              style={{ fontSize: "25px" }}
+            >
+              <li className="nav-item">
+                <a
+                  className="nav-link active"
+                  id="profile-tab"
+                  data-toggle="tab"
+                  href="#profile"
+                  role="tab"
+                  aria-controls="profile"
+                  aria-selected="false"
+                >
+                  Transaction History
+                </a>
+              </li>
+            </ul>
+            <div className="tab-content" id="myTabContent">
+              <div
+                className="tab-pane fade-show active"
+                id="profile"
+                role="tabpanel"
+                aria-labelledby="profile-tab"
+              >
+                <section>
+                  <div className="container mt-5">
+                    <div className="row table-responsive">
+                      <div className="container-fluid">
+                        <h3>Your Transaction History</h3>
+                        <hr className="divider my-4" />
+
+                        {this.props.dataTransaction.map((el, index) => {
+                          return (
+                            <div
+                              className="row"
+                              key={index}
+                              id="product-frame-profile-page"
+                            >
+                              {el.transaction_detail.map((subel, index) => {
+                                return (
+                                  <div className="col-lg-3 mt-5" key={index}>
+                                    <span className="caption">
+                                      <span className="caption-content"></span>
+                                    </span>
+                                    <img
+                                      className="img-fluid"
+                                      src={subel.product_id.image}
+                                      style={{ height: "350px", width: "100%" }}
+                                      alt="product"
+                                    />
+                                    <h3 id="product-name-frame ">
+                                      {subel.product_id.name}
+                                    </h3>
+                                    <h5 id="product-name-frame ">
+                                      IDR {subel.product_id.price}
+                                    </h5>
+                                    <h5 id="product-name-frame ">
+                                      {subel.qty} pcs
+                                    </h5>
+                                  </div>
+                                );
+                              })}
+                            </div>
+                          );
+                        })}
+                      </div>
+                    </div>
+                    <div className=" cf mt-4">
+                      {this.props.dataTransaction.map((el, index) => {
+                        return (
+                          <Fragment key={index}>
+                            <div
+                              className="row my-3"
+                              style={{
+                                border: "2px solid #ccc",
+                                padding: "10px",
+                                borderRadius: "10px",
+                              }}
+                            >
+                              <div className="col-lg-2 totalRow">
+                                <span className="value">
+                                  <strong>Transaction id:</strong> {el.cart.id}
+                                </span>
+                              </div>
+                              <div className="col-lg-5 totalRow">
+                                <span className="value">
+                                  <strong>Total qty:</strong>{" "}
+                                  {el.cart.total_qty}
+                                </span>
+                              </div>
+                              <div className="col-lg-5 totalRow">
+                                <span className="value">
+                                  <strong>Subtotal:</strong>{" "}
+                                  {el.cart.total_price} IDR
+                                </span>
+                              </div>
+                            </div>
+                          </Fragment>
+                        );
+                      })}
+                    </div>
+                  </div>
+                  <div style={{ height: "2rem" }}></div>
+                </section>
+              </div>
+            </div>
+          </Fragment>
         )}
 
         <JoinUs />
