@@ -13,7 +13,7 @@ export const getProductData = (props) => {
   return async (dispatch) => {
     // const token = localStorage.getItem("token");
     await axios
-      .get("http://0.0.0.0:5050/product", {
+      .get("https://breadcrumbbe.andrenovado.my.id/product", {
         headers: {
           "Content-Type": "application/json; charset=utf-8",
           Accept: "application/json; charset=utf-8",
@@ -57,7 +57,7 @@ export const postProductData = (props) => {
     const product_id = localStorage.getItem("product_id");
     if (product_id === null || product_id === undefined || product_id === "") {
       await axios
-        .post("http://0.0.0.0:5050/product", myJSON, {
+        .post("https://breadcrumbbe.andrenovado.my.id/product", myJSON, {
           headers: {
             "Content-Type": "application/json; charset=utf-8",
             Accept: "application/json; charset=utf-8",
@@ -72,13 +72,17 @@ export const postProductData = (props) => {
         });
     } else {
       await axios
-        .patch("http://0.0.0.0:5050/product/" + product_id, myJSON, {
-          headers: {
-            "Content-Type": "application/json; charset=utf-8",
-            Accept: "application/json; charset=utf-8",
-            Authorization: `Bearer ${token}`,
-          },
-        })
+        .patch(
+          "https://breadcrumbbe.andrenovado.my.id/product/" + product_id,
+          myJSON,
+          {
+            headers: {
+              "Content-Type": "application/json; charset=utf-8",
+              Accept: "application/json; charset=utf-8",
+              Authorization: `Bearer ${token}`,
+            },
+          }
+        )
         .then(async (response) => {
           dispatch({ type: "PATCH_PRODUCT_DATA" });
           localStorage.removeItem("product_id");
@@ -109,7 +113,9 @@ export const changePromo = (e) => {
 // function to handle category
 export const handleRequestCategory = (categoryName) => {
   return async (dispatch) => {
-    const response = await axios.get("http://0.0.0.0:5050/product");
+    const response = await axios.get(
+      "https://breadcrumbbe.andrenovado.my.id/product"
+    );
     // dispatch({ type: "ACTIVATE_LOADING" });
     if (response.data.product_type_id !== undefined) {
       dispatch({
@@ -125,7 +131,9 @@ export const handleRequestCategory = (categoryName) => {
 // function to handle get products by category
 export const getProductsByCategory = (categoryName) => {
   return async (dispatch) => {
-    const response = await axios.get("http://0.0.0.0:5050/product");
+    const response = await axios.get(
+      "https://breadcrumbbe.andrenovado.my.id/product"
+    );
     const filterCategory = response.data.filter((item) => {
       if (+item.product_type_id === +categoryName) {
         return item;
@@ -143,7 +151,9 @@ export const getProductsByCategory = (categoryName) => {
 // function to get product by id
 export const getRes = (category) => {
   return async (dispatch) => {
-    const response = await axios.get("http://0.0.0.0:5050/product/" + category);
+    const response = await axios.get(
+      "https://breadcrumbbe.andrenovado.my.id/product/" + category
+    );
 
     dispatch({
       type: "REQUEST_LIST_PRODUCT_DETAILS",
@@ -157,7 +167,7 @@ export const getProductBaker = () => {
   const token = localStorage.getItem("token");
   return async (dispatch) => {
     await axios
-      .get("http://0.0.0.0:5050/product/baker", {
+      .get("https://breadcrumbbe.andrenovado.my.id/product/baker", {
         headers: {
           "Content-Type": "application/json; charset=utf-8",
           Accept: "application/json; charset=utf-8",
@@ -181,7 +191,7 @@ export const deleteProductBaker = (id) => {
   const token = localStorage.getItem("token");
   return async (dispatch) => {
     await axios
-      .delete("http://0.0.0.0:5050/product/" + id, {
+      .delete("https://breadcrumbbe.andrenovado.my.id/product/" + id, {
         headers: {
           "Content-Type": "application/json; charset=utf-8",
           Accept: "application/json; charset=utf-8",

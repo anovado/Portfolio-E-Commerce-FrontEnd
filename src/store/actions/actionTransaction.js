@@ -6,7 +6,7 @@ export const getTransDetail = (props) => {
   return async (dispatch) => {
     const token = localStorage.getItem("token");
     await axios
-      .get("http://0.0.0.0:5050/cart", {
+      .get("https://breadcrumbbe.andrenovado.my.id/cart", {
         headers: {
           "Content-Type": "application/json; charset=utf-8",
           Accept: "application/json; charset=utf-8",
@@ -34,7 +34,7 @@ export const postTransaction = (item) => {
     };
     const myJSON = JSON.stringify(bodyRequest);
     await axios
-      .post("http://0.0.0.0:5050/cart", myJSON, {
+      .post("https://breadcrumbbe.andrenovado.my.id/cart", myJSON, {
         headers: {
           "Content-Type": "application/json; charset=utf-8",
           Accept: "application/json; charset=utf-8",
@@ -55,7 +55,7 @@ export const deleteTransaction = (item) => {
     console.log("item", item);
     const token = localStorage.getItem("token");
     await axios
-      .delete("http://0.0.0.0:5050/cart/" + item, {
+      .delete("https://breadcrumbbe.andrenovado.my.id/cart/" + item, {
         headers: {
           "Content-Type": "application/json; charset=utf-8",
           Accept: "application/json; charset=utf-8",
@@ -79,7 +79,7 @@ export const checkOut = () => {
     };
     const myJSON = JSON.stringify(bodyRequest);
     await axios
-      .post("http://0.0.0.0:5050/cart/checkout", myJSON, {
+      .post("https://breadcrumbbe.andrenovado.my.id/cart/checkout", myJSON, {
         headers: {
           "Content-Type": "application/json; charset=utf-8",
           Accept: "application/json; charset=utf-8",
@@ -101,7 +101,7 @@ export const getHistoryTransaction = () => {
     const status = localStorage.getItem("status");
     if (status === "baker") {
       await axios
-        .get("http://0.0.0.0:5050/cart/checkout", {
+        .get("https://breadcrumbbe.andrenovado.my.id/cart/checkout", {
           headers: {
             "Content-Type": "application/json; charset=utf-8",
             Accept: "application/json; charset=utf-8",
@@ -119,7 +119,7 @@ export const getHistoryTransaction = () => {
         });
     } else {
       await axios
-        .get("http://0.0.0.0:5050/cart/history", {
+        .get("https://breadcrumbbe.andrenovado.my.id/cart/history", {
           headers: {
             "Content-Type": "application/json; charset=utf-8",
             Accept: "application/json; charset=utf-8",
@@ -151,7 +151,7 @@ export const updateIncrease = (e) => {
     };
     const myJSON = JSON.stringify(bodyRequest);
     await axios
-      .post("http://0.0.0.0:5050/cart", myJSON, {
+      .post("https://breadcrumbbe.andrenovado.my.id/cart", myJSON, {
         headers: {
           "Content-Type": "application/json; charset=utf-8",
           Accept: "application/json; charset=utf-8",
@@ -179,7 +179,7 @@ export const updateDecrease = (e) => {
     };
     const myJSON = JSON.stringify(bodyRequest);
     await axios
-      .post("http://0.0.0.0:5050/cart", myJSON, {
+      .post("https://breadcrumbbe.andrenovado.my.id/cart", myJSON, {
         headers: {
           "Content-Type": "application/json; charset=utf-8",
           Accept: "application/json; charset=utf-8",

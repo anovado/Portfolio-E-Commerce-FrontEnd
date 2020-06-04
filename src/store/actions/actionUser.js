@@ -5,7 +5,7 @@ export const doLogin = (props) => {
   return async (dispatch, getState) => {
     await axios({
       method: "GET",
-      url: "http://0.0.0.0:5050/signin",
+      url: "https://breadcrumbbe.andrenovado.my.id/signin",
       params: {
         username: getState().user.namaPengguna,
         password: getState().user.kataKunci,
@@ -43,7 +43,7 @@ export const doSignUp = (props) => {
     };
     const myJSON = JSON.stringify(bodyRequest);
     await axios
-      .post("http://0.0.0.0:5050/client", myJSON, {
+      .post("https://breadcrumbbe.andrenovado.my.id/client", myJSON, {
         headers: {
           "Content-Type": "application/json; charset=utf-8",
           Accept: "application/json; charset=utf-8",
@@ -84,7 +84,7 @@ export const getUserData = (props) => {
     const token = localStorage.getItem("token");
     if (status === "buyer") {
       await axios
-        .get("http://0.0.0.0:5050/customer/profile", {
+        .get("https://breadcrumbbe.andrenovado.my.id/customer/profile", {
           headers: {
             "Content-Type": "application/json; charset=utf-8",
             Accept: "application/json; charset=utf-8",
@@ -99,7 +99,7 @@ export const getUserData = (props) => {
         });
     } else if (status === "baker") {
       await axios
-        .get("http://0.0.0.0:5050/baker/profile", {
+        .get("https://breadcrumbbe.andrenovado.my.id/baker/profile", {
           headers: {
             "Content-Type": "application/json; charset=utf-8",
             Accept: "application/json; charset=utf-8",
@@ -136,13 +136,17 @@ export const postUserData = (props) => {
     if (content === []) {
       if (status === "buyer") {
         await axios
-          .post("http://0.0.0.0:5050/customer/profile", myJSON, {
-            headers: {
-              "Content-Type": "application/json; charset=utf-8",
-              Accept: "application/json; charset=utf-8",
-              Authorization: `Bearer ${token}`,
-            },
-          })
+          .post(
+            "https://breadcrumbbe.andrenovado.my.id/customer/profile",
+            myJSON,
+            {
+              headers: {
+                "Content-Type": "application/json; charset=utf-8",
+                Accept: "application/json; charset=utf-8",
+                Authorization: `Bearer ${token}`,
+              },
+            }
+          )
           .then(async (response) => {
             dispatch({ type: "SUCCESS_EDIT_DATA" });
           })
@@ -151,13 +155,17 @@ export const postUserData = (props) => {
           });
       } else if (status === "baker") {
         await axios
-          .post("http://0.0.0.0:5050/baker/profile", myJSON, {
-            headers: {
-              "Content-Type": "application/json; charset=utf-8",
-              Accept: "application/json; charset=utf-8",
-              Authorization: `Bearer ${token}`,
-            },
-          })
+          .post(
+            "https://breadcrumbbe.andrenovado.my.id/baker/profile",
+            myJSON,
+            {
+              headers: {
+                "Content-Type": "application/json; charset=utf-8",
+                Accept: "application/json; charset=utf-8",
+                Authorization: `Bearer ${token}`,
+              },
+            }
+          )
           .then(async (response) => {
             dispatch({ type: "SUCCESS_EDIT_DATA" });
           })
@@ -168,13 +176,17 @@ export const postUserData = (props) => {
     } else {
       if (status === "buyer") {
         await axios
-          .patch("http://0.0.0.0:5050/customer/profile", myJSON, {
-            headers: {
-              "Content-Type": "application/json; charset=utf-8",
-              Accept: "application/json; charset=utf-8",
-              Authorization: `Bearer ${token}`,
-            },
-          })
+          .patch(
+            "https://breadcrumbbe.andrenovado.my.id/customer/profile",
+            myJSON,
+            {
+              headers: {
+                "Content-Type": "application/json; charset=utf-8",
+                Accept: "application/json; charset=utf-8",
+                Authorization: `Bearer ${token}`,
+              },
+            }
+          )
           .then(async (response) => {
             dispatch({ type: "SUCCESS_EDIT_DATA" });
           })
@@ -183,13 +195,17 @@ export const postUserData = (props) => {
           });
       } else if (status === "baker") {
         await axios
-          .patch("http://0.0.0.0:5050/baker/profile", myJSON, {
-            headers: {
-              "Content-Type": "application/json; charset=utf-8",
-              Accept: "application/json; charset=utf-8",
-              Authorization: `Bearer ${token}`,
-            },
-          })
+          .patch(
+            "https://breadcrumbbe.andrenovado.my.id/baker/profile",
+            myJSON,
+            {
+              headers: {
+                "Content-Type": "application/json; charset=utf-8",
+                Accept: "application/json; charset=utf-8",
+                Authorization: `Bearer ${token}`,
+              },
+            }
+          )
           .then(async (response) => {
             dispatch({ type: "SUCCESS_EDIT_DATA" });
           })

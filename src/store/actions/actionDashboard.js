@@ -9,7 +9,7 @@ export const postProductType = () => {
     };
     const myJSON = JSON.stringify(bodyRequest);
     await axios
-      .post("http://0.0.0.0:5050/product_type", myJSON, {
+      .post("https://breadcrumbbe.andrenovado.my.id/product_type", myJSON, {
         headers: {
           "Content-Type": "application/json; charset=utf-8",
           Accept: "application/json; charset=utf-8",
@@ -34,7 +34,7 @@ export const postPaymentMethod = () => {
     };
     const myJSON = JSON.stringify(bodyRequest);
     await axios
-      .post("http://0.0.0.0:5050/payment_method", myJSON, {
+      .post("https://breadcrumbbe.andrenovado.my.id/payment_method", myJSON, {
         headers: {
           "Content-Type": "application/json; charset=utf-8",
           Accept: "application/json; charset=utf-8",
@@ -59,7 +59,7 @@ export const postShippingMethod = () => {
     };
     const myJSON = JSON.stringify(bodyRequest);
     await axios
-      .post("http://0.0.0.0:5050/shipping", myJSON, {
+      .post("https://breadcrumbbe.andrenovado.my.id/shipping", myJSON, {
         headers: {
           "Content-Type": "application/json; charset=utf-8",
           Accept: "application/json; charset=utf-8",
@@ -82,7 +82,7 @@ export const getClientData = (props) => {
     const token = localStorage.getItem("token");
 
     await axios
-      .get("http://0.0.0.0:5050/client", {
+      .get("https://breadcrumbbe.andrenovado.my.id/client", {
         headers: {
           "Content-Type": "application/json; charset=utf-8",
           Accept: "application/json; charset=utf-8",
@@ -104,7 +104,7 @@ export const deleteClient = (id) => {
     const token = localStorage.getItem("token");
     console.log("id dalam action", id);
     await axios
-      .delete("http://0.0.0.0:5050/client/" + id, {
+      .delete("https://breadcrumbbe.andrenovado.my.id/client/" + id, {
         headers: {
           "Content-Type": "application/json; charset=utf-8",
           Accept: "application/json; charset=utf-8",
