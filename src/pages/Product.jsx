@@ -108,7 +108,7 @@ class Product extends Component {
               </div>
             </div>
           </div>
-
+          <div className="container">WHY YOU CHOOSE OUR PRODUCTS</div>
           <div className="container mt-5">
             <div className="row justify-content-center mt-5">
               <div className="col-lg-8 text-center">
