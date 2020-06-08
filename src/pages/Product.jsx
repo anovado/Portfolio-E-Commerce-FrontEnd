@@ -108,10 +108,129 @@ class Product extends Component {
               </div>
             </div>
           </div>
-          <div className="container">WHY YOU CHOOSE OUR PRODUCTS</div>
           <div className="container mt-5">
             <div className="row justify-content-center mt-5">
-              <div className="col-lg-8 text-center">
+              <div className="col-lg text-center">
+                <h2 className="mt-0">Why Choose Our Products?</h2>
+                <hr className="divider my-2" />
+              </div>
+            </div>
+            <div
+              id="carouselExampleIndicators"
+              class="carousel slide"
+              data-ride="carousel"
+            >
+              <ol class="carousel-indicators">
+                <li
+                  data-target="#carouselExampleIndicators"
+                  data-slide-to="0"
+                  class="active"
+                ></li>
+                <li
+                  data-target="#carouselExampleIndicators"
+                  data-slide-to="1"
+                ></li>
+                <li
+                  data-target="#carouselExampleIndicators"
+                  data-slide-to="2"
+                ></li>
+              </ol>
+              <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <div className="row justify-content-center mt-5 why-choose-us">
+                    <div className="col-lg-7 px-0">
+                      <div>
+                        <img
+                          src={require("../assets/images/freshly_baked.jpg")}
+                          alt="freshly baked"
+                          style={{
+                            width: "100%",
+                            height: "250px",
+                            borderRadius: "8px 0 0 8px",
+                          }}
+                        />
+                      </div>
+                    </div>
+                    <div className="col-lg-5 my-auto">
+                      <p className="subtitle-plus text-center">Freshly Baked</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <div className="row justify-content-center mt-5 why-choose-us">
+                    <div className="col-lg-5 my-auto">
+                      <p className="subtitle-plus text-center">
+                        Clean & Hygienic
+                      </p>
+                    </div>
+                    <div className="col-lg-7 px-0">
+                      <div>
+                        <img
+                          src={require("../assets/images/clean_kitchen.jpg")}
+                          alt="clean kitchen"
+                          style={{
+                            width: "100%",
+                            height: "250px",
+                            borderRadius: "0 8px 8px 0",
+                          }}
+                        />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="carousel-item">
+                  <div className="row justify-content-center mt-5 why-choose-us">
+                    <div className="col-lg-7 px-0">
+                      <div>
+                        <img
+                          src={require("../assets/images/high_quality.jpg")}
+                          alt="high quality"
+                          style={{
+                            width: "100%",
+                            height: "250px",
+                            borderRadius: "8px 0 0 8px",
+                          }}
+                        />
+                      </div>
+                    </div>
+                    <div className="col-lg-5 my-auto">
+                      <p className="subtitle-plus text-center">
+                        High Quality Ingredients
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <a
+                class="carousel-control-prev"
+                href="#carouselExampleIndicators"
+                role="button"
+                data-slide="prev"
+              >
+                <span
+                  class="carousel-control-prev-icon"
+                  aria-hidden="true"
+                ></span>
+                <span class="sr-only">Previous</span>
+              </a>
+              <a
+                class="carousel-control-next"
+                href="#carouselExampleIndicators"
+                role="button"
+                data-slide="next"
+              >
+                <span
+                  class="carousel-control-next-icon"
+                  aria-hidden="true"
+                ></span>
+                <span class="sr-only">Next</span>
+              </a>
+            </div>
+          </div>
+
+          <div className="container mt-5">
+            <div className="row justify-content-center mt-5">
+              <div className="col-lg text-center">
                 <h2 className="mt-0">Product Reviews</h2>
                 <hr className="divider my-4" />
               </div>

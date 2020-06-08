@@ -4,6 +4,7 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700");
 @import url("https://fonts.googleapis.com/css?family=Roboto:300,400,500,700");
 @import url("https://fonts.googleapis.com/css?family=Merriweather:300;400;700");
+@import url("https://fonts.googleapis.com/css2?family=Lobster&display=swap");
 
 * {
   font-family: "Open Sans", sans-serif;
@@ -911,10 +912,6 @@ form .form-group input {
   font-size: 1.2rem;
 }
 
-#product-picture-page {
-  /* box-shadow: 10px 20px 80px 0px rgba(153, 153, 153, 0.3); */
-}
-
 #button-add-to-cart {
   background-color: rgb(219, 211, 94);
   padding: 5px;
@@ -975,6 +972,15 @@ form .form-group input {
   text-transform: uppercase;
 }
 
+.why-choose-us {
+  /* border: 1px solid rgba(187, 93, 15, 0.7); */
+  border-radius: 8px;
+}
+
+.subtitle-plus {
+  font-family: "Lobster", cursive;
+  font-size: 3rem;
+}
 /* CART PAGE */
 
 .tombolplusmin {
