@@ -111,7 +111,7 @@ class Product extends Component {
           <div className="container mt-5">
             <div className="row justify-content-center mt-5">
               <div className="col-lg text-center">
-                <h2 className="mt-0">Why Choose Our Products?</h2>
+                <h2 className="mt-0">Why Choose Our Products - coba edit?</h2>
                 <hr className="divider my-2" />
               </div>
             </div>
