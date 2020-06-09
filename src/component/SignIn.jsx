@@ -5,13 +5,13 @@ const SignIn = (props, postLogin) => {
   // function to handle signin
   postLogin = async () => {
     await props.doLogin();
-    const isLogin = props.login;
-    console.log("islogin", isLogin);
+    const isLogin = localStorage.getItem("isLogin");
+    console.log("islogin dalam component", isLogin);
     const status = localStorage.getItem("status");
     if (isLogin && status !== "admin") {
-      props.history.push("/categories");
+      await props.history.push("/categories");
     } else if (isLogin && status === "admin") {
-      props.history.push("/dashboard");
+      await props.history.push("/dashboard");
     }
   };
 
@@ -19,7 +19,7 @@ const SignIn = (props, postLogin) => {
     <div className="inner home-form-box">
       <div className="panel panel-right bottom-left">
         <div className="panel-content">
-          <div className="form" onSubmit={(e) => e.preventDefault()}>
+          <form onSubmit={(e) => e.preventDefault()}>
             <h1 id="home-form-title">Sign In</h1>
             <div className="group">
               <input
@@ -41,16 +41,16 @@ const SignIn = (props, postLogin) => {
               <span className="highlight"></span>
               <label>Your Password</label>
             </div>
-            <Link
+            <button
               id="send-btn"
               className="px-3"
-              to="#"
+              // to="#"
               onClick={() => postLogin()}
               type="submit"
             >
-              Send
-            </Link>
-          </div>
+              Sign In
+            </button>
+          </form>
         </div>
       </div>
     </div>

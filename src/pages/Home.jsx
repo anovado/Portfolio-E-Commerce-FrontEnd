@@ -11,7 +11,7 @@ class Home extends Component {
   componentDidMount = async () => {
     const isLogin = localStorage.getItem("isLogin");
     if (isLogin) {
-      this.props.history.push("/categories");
+      await this.props.history.push("/categories");
     }
   };
 
