@@ -32,5 +32,5 @@ The features of my e-commerce are:
   - Add new payment method
   - Add new shipping method
 
-Developer: [Andre Novado](https://www.linkedin.com/in/andre-novado/)
+### Developer: [Andre Novado](https://www.linkedin.com/in/andre-novado/)
 
